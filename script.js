@@ -127,7 +127,12 @@ if (contatoForm) {
             e.preventDefault();
             if (feedback) feedback.textContent = msg;
         } else {
-            if (feedback) feedback.textContent = 'Enviando...';
+            e.preventDefault(); // Impede o envio e o redirecionamento
+            if (feedback) {
+                feedback.style.color = "#2a7c2a";
+                feedback.textContent = "Muito obrigada pelo feedback!";
+            }
+            contatoForm.reset();
         }
     });
     // Limpa feedback ao digitar
