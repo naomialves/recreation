@@ -89,7 +89,38 @@ header nav a:focus {
     outline: 2px solid var(--focus-outline);
 }
 #menu-toggle {
-    display: none !important;
+    display: none;
+}
+@media (max-width: 900px) {
+    #menu-toggle {
+        display: block !important;
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        background: none;
+        border: none;
+        font-size: 2.2rem;
+        color: #ffe7c2;
+        z-index: 1001;
+        cursor: pointer;
+    }
+    header nav ul.nav {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(124,90,55,0.97);
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 2px 12px rgba(124,90,55,0.13);
+        z-index: 1000;
+        padding: 12px 0;
+    }
+    header nav ul.nav.menu-open {
+        display: flex;
+    }
 }
 
 /* =========================
@@ -1078,21 +1109,6 @@ body.high-contrast .img-lightbox-caption {
     text-align: center;
     min-height: 20px;
 }
-.formulario select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 18px 18px;
-}
-.formulario textarea {
-    resize: vertical;
-    min-height: 90px;
-    max-height: 300px;
-}
-
-/* Responsividade do formulário */
 @media (max-width: 600px) {
     .formulario {
         padding: 12px 4vw 12px 4vw;
@@ -1198,123 +1214,112 @@ body.high-contrast .img-lightbox-caption {
     }
 }
 
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
+/* ===== MELHORIAS DE RESPONSIVIDADE E INTERAÇÃO ===== */
+
+/* Melhora o foco de navegação por teclado */
+:focus-visible {
+    outline: 2.5px solid var(--accent-color);
+    outline-offset: 2px;
+    z-index: 2;
 }
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
+
+/* Botão do menu hamburguer com área de toque maior */
+#menu-toggle {
+    touch-action: manipulation;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 12px;
+    transition: background 0.2s;
 }
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
+#menu-toggle:active,
+#menu-toggle:focus-visible {
+    background: var(--secondary-color);
     color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+
+/* Melhora o clique/tap em links e botões */
+a, button, .btn {
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
+
+/* Melhora o espaçamento e o toque em dispositivos móveis */
+@media (max-width: 900px) {
+    .banner-buttons .btn,
+    .formulario button,
+    .noticia-card a,
+    .carousel img,
+    .img-dupla img {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    .carousel {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    .carousel img {
+        scroll-snap-align: center;
+    }
 }
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
+
+/* Melhora a experiência de rolagem horizontal no carrossel */
+.carousel {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) #fff8ef;
 }
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+/* Melhora o feedback visual ao clicar/tocar em imagens */
+.carousel img:active,
+.img-dupla img:active,
+section img:active {
+    filter: brightness(0.93) saturate(1.2);
+    transform: scale(0.97) rotate(-1deg);
+    box-shadow: 0 2px 8px rgba(124,90,55,0.18);
+}
+
+/* Ajusta o overlay do lightbox para mobile */
 @media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
+    .img-lightbox-overlay {
+        padding: 8vw 2vw 8vw 2vw;
+    }
+    .img-lightbox-overlay img {
         max-width: 98vw;
+        max-height: 45vh;
     }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
+}
+
+/* Melhora o espaçamento dos campos do formulário em mobile */
+@media (max-width: 600px) {
     .formulario input,
     .formulario textarea,
     .formulario select {
-        font-size: 1rem;
-        padding: 8px;
+        margin-bottom: 14px;
+    }
+    .formulario button {
+        min-height: 44px;
     }
 }
 
-/* =========================
-   RESPONSIVIDADE DO VÍDEO
-   ========================= */
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 32px 0 0 0;
-}
-.video-container iframe {
-    width: 100%;
-    max-width: 800px;
-    height: 450px;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(124,90,55,0.13);
-}
-
-/* Responsividade para vídeo em telas pequenas */
+/* Melhora a experiência de navegação por teclado no menu mobile */
 @media (max-width: 900px) {
-    .video-container iframe {
-        max-width: 98vw;
-        height: 56vw;
-        min-height: 180px;
+    header nav ul.nav.menu-open li a {
+        padding: 14px 0;
+        font-size: 1.15rem;
     }
 }
-@media (max-width: 600px) {
-    .video-container iframe {
-        max-width: 99vw;
-        height: 54vw;
-        min-height: 140px;
-    }
+
+/* Melhora o feedback visual ao clicar/tocar em cards de notícia */
+.noticia-card:active {
+    box-shadow: 0 2px 8px rgba(124,90,55,0.18);
+    transform: scale(0.98);
 }
 
