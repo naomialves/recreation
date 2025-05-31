@@ -263,4 +263,15 @@ if (menuToggle && menuList) {
             menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
+    // Fecha o menu ao clicar fora dele em mobile
+    document.addEventListener('click', (e) => {
+        if (
+            menuList.classList.contains('menu-open') &&
+            !menuList.contains(e.target) &&
+            e.target !== menuToggle
+        ) {
+            menuList.classList.remove('menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
