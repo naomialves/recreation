@@ -88,6 +88,7 @@ header nav a:focus {
     color: #3e2c1a;
     outline: 2px solid var(--focus-outline);
 }
+/* Menu hamburguer: visível apenas em telas menores */
 #menu-toggle {
     display: none;
 }
@@ -103,6 +104,10 @@ header nav a:focus {
         color: #ffe7c2;
         z-index: 1001;
         cursor: pointer;
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 12px;
+        transition: background 0.2s;
     }
     header nav ul.nav {
         display: none;
@@ -120,6 +125,11 @@ header nav a:focus {
     }
     header nav ul.nav.menu-open {
         display: flex;
+    }
+    /* Melhora a experiência de navegação por teclado no menu mobile */
+    header nav ul.nav.menu-open li a {
+        padding: 14px 0;
+        font-size: 1.15rem;
     }
 }
 
@@ -414,7 +424,6 @@ button:hover, .btn:hover {
     border: 3px solid var(--secondary-color);
     background: #fff8ef;
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    max-width: 98vw;
 }
 .carousel img:hover,
 .carousel img:focus {
@@ -935,6 +944,180 @@ body.high-contrast .img-lightbox-caption {
 }
 
 /* Responsividade do formulário */
+@media (max-width: 600px) {
+    .formulario {
+        padding: 12px 4vw 12px 4vw;
+        border-radius: 10px;
+        max-width: 98vw;
+    }
+    .formulario h2 {
+        font-size: 1.2rem;
+    }
+    .formulario input,
+    .formulario textarea,
+    .formulario select {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+/* =========================
+   MELHORIAS DE LIGHTBOX
+   ========================= */
+.img-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 20, 10, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s;
+    padding: 32px 12px 24px 12px;
+    box-sizing: border-box;
+}
+.img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: #fff;
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+    font-size: 2.2vw;
+}
+.img-lightbox-overlay .img-lightbox-caption {
+    color: #ffe7c2;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 8px #000;
+    max-width: 90vw;
+    word-break: break-word;
+    background: rgba(44,36,24,0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: bold;
+}
+@media (max-width: 600px) {
+    .img-lightbox-overlay img {
+        max-width: 98vw;
+        max-height: 50vh;
+        font-size: 4vw;
+    }
+    .img-lightbox-overlay .img-lightbox-caption {
+        font-size: 1.1rem;
+        padding: 6px 4vw;
+    }
+}
+
+/* =========================
+   MELHORIAS DE ESPAÇAMENTO MOBILE
+   ========================= */
+@media (max-width: 900px) {
+    body, html {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
+    section {
+        padding-left: 5vw !important;
+        padding-right: 5vw !important;
+        box-sizing: border-box;
+    }
+    .formulario-container {
+        padding-left: 2vw !important;
+        padding-right: 2vw !important;
+    }
+}
+@media (max-width: 600px) {
+    section {
+        padding-left: 3vw !important;
+        padding-right: 3vw !important;
+    }
+    .formulario-container {
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+    }
+}
+
+/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
+.formulario {
+    margin: 24px auto 24px auto;
+    padding: 32px 32px 24px 32px;
+    max-width: 480px;
+    background: #fff8ef;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 2px solid var(--accent-color);
+    position: relative;
+}
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+.formulario label {
+    text-align: left;
+    margin-bottom: 4px;
+    font-weight: bold;
+    display: block;
+    color: var(--primary-color);
+}
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    font-size: 1.08rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    background: #fff;
+    color: #3e2c1a;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.formulario button {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 1.15rem;
+    padding: 14px 0;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
+    color: #3e2c1a;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.formulario button:hover,
+.formulario button:focus {
+    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
+    color: #fff;
+    outline: 2px solid var(--focus-outline);
+    transform: scale(1.04);
+}
+.form-feedback {
+    color: #b00;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    text-align: center;
+    min-height: 20px;
+}
 @media (max-width: 600px) {
     .formulario {
         padding: 12px 4vw 12px 4vw;
