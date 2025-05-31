@@ -12,26 +12,27 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 
 ## 🚀 Recursos e Funcionalidades
 
-- **Design responsivo e moderno** (mobile first)
-- Alternância entre **modo claro** e **modo escuro**
-- **Carrossel de imagens** automático e interativo
-- **Galeria com efeito lightbox**: clique na imagem para ampliar e veja a origem ao passar o mouse
+- Design responsivo e moderno
+- Alternância entre **modo claro**, **modo escuro** e **alto contraste**
+- Carrossel de imagens automático e interativo
+- Galeria com efeito lightbox: clique na imagem para ampliar e veja a origem ao passar o mouse
 - Destaque visual em todas as seções do site
 - Efeitos visuais como parallax e destaque de seção visível
 - Navegação suave para links internos
-- **Botões de acessibilidade** para ajuste de fonte
+- Botões de acessibilidade para ajuste de fonte (com múltiplos níveis, inclusive tamanhos muito grandes)
+- Menu hamburguer para dispositivos móveis
 - Seções informativas sobre o campo, cidade, festejos, notícias e contato
-- **Acessibilidade aprimorada**: skip link, foco visível, navegação por teclado, contraste reforçado
-- **SEO básico**: meta tags, favicon, título descritivo
+- Formulário de contato com feedback visual e validação
+- Totalmente acessível para leitores de tela
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5** semântico
-- **CSS3** customizado (sem frameworks)
-- **JavaScript** (vanilla, acessível e leve)
-- **GitHub Pages** (hospedagem gratuita)
+- **HTML5**
+- **CSS3** (customizado, sem frameworks)
+- **JavaScript** (vanilla)
+- **GitHub Pages** (hospedagem)
 
 ---
 
@@ -56,18 +57,16 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 
 ## ♿️ Acessibilidade
 
-- Skip link para pular direto ao conteúdo principal
-- Navegação por teclado em todas as áreas interativas
-- Foco visível aprimorado em links e botões
-- Contraste reforçado para textos e botões
-- Labels e aria-labels em formulários e navegação
+- Ajuste de fonte para todos os textos, inclusive tamanhos extragrandes
+- Alto contraste para pessoas com baixa visão
+- Navegação por teclado e leitores de tela
+- Feedback visual em formulários
 
 ---
 
-## 🤝 Créditos e Colaboração
+## 🤝 Ajuda com a produção do site
 
-- [Naomi Alves](https://github.com/naomialves) – Desenvolvimento e design
-- [ChatGPT](https://chatgpt.com/) – Apoio em revisão e sugestões de código
+- [ChatGPT - sugestões e correções](https://chat.openai.com/)
 
 ---
 
