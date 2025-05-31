@@ -107,43 +107,53 @@ html, body {
 @media (max-width: 900px) {
     #menu-toggle {
         display: block !important;
-        position: absolute;
-        top: 14px;
-        right: 18px;
-        background: none;
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        background: var(--primary-color);
         border: none;
         font-size: 2.2rem;
         color: #ffe7c2;
-        z-index: 1001;
+        z-index: 2001;
         cursor: pointer;
         min-width: 48px;
         min-height: 48px;
         border-radius: 12px;
-        transition: background 0.2s;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: 0 2px 8px rgba(60,40,20,0.13);
+    }
+    #menu-toggle:focus,
+    #menu-toggle:hover {
+        background: var(--secondary-color);
+        color: #3e2c1a;
     }
     header nav ul.nav {
         display: none;
         flex-direction: column;
         gap: 0;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
-        right: 0;
+        height: 100vh;
+        width: 240px;
         background: rgba(124,90,55,0.97);
-        border-radius: 0 0 16px 16px;
-        box-shadow: 0 2px 18px rgba(124,90,55,0.18);
-        z-index: 1000;
+        border-radius: 0 18px 18px 0;
+        box-shadow: 2px 0 18px rgba(124,90,55,0.18);
+        z-index: 2000;
         padding: 0;
         margin: 0;
-        width: 100vw;
         min-width: 0;
+        overflow-y: auto;
+        transition: transform 0.3s;
+        transform: translateX(-110%);
     }
     header nav ul.nav.menu-open {
         display: flex;
+        transform: translateX(0);
     }
     header nav ul.nav li {
         width: 100%;
-        text-align: center;
+        text-align: left;
         border-bottom: 1px solid rgba(191,160,116,0.13);
     }
     header nav ul.nav li:last-child {
@@ -151,7 +161,7 @@ html, body {
     }
     header nav ul.nav li a {
         display: block;
-        padding: 18px 0;
+        padding: 18px 24px;
         font-size: 1.2rem;
         color: #ffe7c2;
         border-radius: 0;
@@ -162,6 +172,16 @@ html, body {
     header nav ul.nav li a:hover {
         background: var(--secondary-color);
         color: #3e2c1a;
+    }
+    /* Escurece o fundo ao abrir o menu */
+    body.menu-open-overlay::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(44,36,24,0.45);
+        z-index: 1500;
+        pointer-events: auto;
+        transition: background 0.3s;
     }
     header nav {
         min-height: 56px;
@@ -183,7 +203,7 @@ section, .formulario-container, .carousel, .img-dupla {
     overflow-x: hidden;
 }
 
-/* Imagens responsivas */
+/* Imagens responsivas e proporcionais */
 img, iframe {
     max-width: 100%;
     height: auto;
@@ -191,60 +211,75 @@ img, iframe {
     margin-left: auto;
     margin-right: auto;
     border-radius: 8px;
+    object-fit: cover;
 }
+
+/* Ajuste para imagens em carrossel, dupla e seções */
 .carousel img,
 .img-dupla img,
 section img {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
+    aspect-ratio: 16/10;
     height: auto;
+    min-width: 120px;
+    min-height: 80px;
     object-fit: cover;
+    background: #fff8ef;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(124,90,55,0.13), 0 1.5px 6px rgba(60,40,20,0.08);
+    border: 3px solid var(--secondary-color);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
+
+/* Responsividade aprimorada */
 @media (max-width: 1200px) {
     .carousel img,
     .img-dupla img {
         max-width: 220px;
+        aspect-ratio: 16/10;
     }
 }
 @media (max-width: 900px) {
     .carousel img,
     .img-dupla img {
-        max-width: 120px;
+        max-width: 140px;
+        aspect-ratio: 16/10;
     }
     .carousel {
-        gap: 12px;
-        padding: 16px 0;
+        gap: 10px;
+        padding: 12px 0;
     }
     .img-dupla {
-        gap: 12px;
+        gap: 10px;
     }
     section {
-        padding: 18px 4vw 12px 4vw;
-        margin: 18px 0;
-        border-radius: 12px;
+        padding: 16px 3vw 10px 3vw;
+        margin: 14px 0;
+        border-radius: 10px;
     }
 }
 @media (max-width: 600px) {
     .carousel img,
     .img-dupla img,
     section img {
-        max-width: 90px !important;
-        height: 50px !important;
+        max-width: 96vw !important;
         min-width: 60px;
         min-height: 40px;
+        aspect-ratio: 16/10;
         margin: 6px auto;
         border-radius: 6px;
-        max-height: 60px;
+        max-height: 38vw;
     }
     section {
-        padding: 10px 2vw 8px 2vw;
-        margin: 10px 0;
-        border-radius: 8px;
+        padding: 8px 2vw 6px 2vw;
+        margin: 8px 0;
+        border-radius: 7px;
     }
     .formulario {
-        padding: 8px 2vw;
+        padding: 6px 2vw;
         border-radius: 8px;
-        max-width: 98vw;
+        max-width: 99vw;
     }
 }
 
@@ -632,7 +667,244 @@ footer a:hover {
 }
 
 /* =========================
-   RESPONSIVIDADE PROFISSIONAL E MENU HAMBURGUER
+   RESPONSIVIDADE E MENU HAMBURGUER
    ========================= */
 
-/* Removido todo o código de responsividade e media queries */
+/* ======= MELHORIAS DE ESPAÇAMENTO LATERAL MOBILE ======= */
+@media (max-width: 900px) {
+    body, html {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
+    main, section, .formulario-container, .formulario, .carousel, .img-dupla {
+        padding-left: 5vw !important;
+        padding-right: 5vw !important;
+        box-sizing: border-box;
+    }
+}
+@media (max-width: 600px) {
+    main, section, .formulario-container, .formulario, .carousel, .img-dupla {
+        padding-left: 4vw !important;
+        padding-right: 4vw !important;
+    }
+}
+
+/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
+.formulario-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.formulario {
+    margin: 24px auto 24px auto;
+    padding: 32px 32px 24px 32px;
+    max-width: 480px;
+    background: #fff8ef;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 2px solid var(--accent-color);
+    position: relative;
+}
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+.formulario label {
+    text-align: left;
+    margin-bottom: 4px;
+    font-weight: bold;
+    display: block;
+    color: var(--primary-color);
+}
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    font-size: 1.08rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    background: #fff;
+    color: #3e2c1a;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.formulario button {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 1.15rem;
+    padding: 14px 0;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
+    color: #3e2c1a;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.formulario button:hover,
+.formulario button:focus {
+    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
+    color: #fff;
+    outline: 2px solid var(--focus-outline);
+    transform: scale(1.04);
+}
+.form-feedback {
+    color: #b00;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    text-align: center;
+    min-height: 20px;
+}
+.formulario select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px 18px;
+}
+.formulario textarea {
+    resize: vertical;
+    min-height: 90px;
+    max-height: 300px;
+}
+@media (max-width: 600px) {
+    .formulario {
+        padding: 12px 4vw 12px 4vw;
+        border-radius: 10px;
+        max-width: 98vw;
+    }
+    .formulario h2 {
+        font-size: 1.2rem;
+    }
+    .formulario input,
+    .formulario textarea,
+    .formulario select {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+/* ======= ALTO CONTRASTE ======= */
+body.high-contrast {
+    --bg-color: #000 !important;
+    --text-color: #fff !important;
+    --primary-color: #fff !important;
+    --secondary-color: #ff0 !important;
+    --accent-color: #ff0 !important;
+    --bg-dark: #000 !important;
+    --text-dark: #fff !important;
+    --focus-outline: #ff0 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+}
+body.high-contrast * {
+    background: none !important;
+    color: #fff !important;
+    border-color: #ff0 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+body.high-contrast a, body.high-contrast a:visited {
+    color: #0ff !important;
+    text-decoration: underline !important;
+}
+body.high-contrast header,
+body.high-contrast footer {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #ff0 !important;
+}
+body.high-contrast .btn,
+body.high-contrast button {
+    background: #000 !important;
+    color: #ff0 !important;
+    border: 2px solid #ff0 !important;
+}
+body.high-contrast input,
+body.high-contrast textarea,
+body.high-contrast select {
+    background: #000 !important;
+    color: #fff !important;
+    border: 2px solid #ff0 !important;
+}
+body.high-contrast .img-lightbox-overlay {
+    background: #000 !important;
+}
+body.high-contrast .img-lightbox-caption {
+    color: #ff0 !important;
+}
+
+/* ======= LIGHTBOX MELHORADO ======= */
+.img-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 20, 10, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s;
+    padding: 32px 12px 24px 12px;
+    box-sizing: border-box;
+}
+.img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: #fff;
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+    font-size: 2.2vw;
+    /* Centraliza verticalmente e horizontalmente */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.img-lightbox-overlay .img-lightbox-caption {
+    color: #ffe7c2;
+    text-align: center;
+    margin: 18px auto 0 auto;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 8px #000;
+    max-width: 90vw;
+    word-break: break-word;
+    background: rgba(44,36,24,0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: bold;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+@media (max-width: 600px) {
+    .img-lightbox-overlay img {
+        max-width: 98vw;
+        max-height: 50vh;
+        font-size: 4vw;
+    }
+    .img-lightbox-overlay .img-lightbox-caption {
+        font-size: 1.1rem;
+        padding: 6px 4vw;
+    }
+}
+

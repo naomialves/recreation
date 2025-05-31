@@ -3,29 +3,20 @@
 // =========================
 const aumentarFonteBtn = document.getElementById('aumentar-fonte');
 const diminuirFonteBtn = document.getElementById('diminuir-fonte');
-let fonteNiveis = [14, 16, 18, 20, 22, 24, 28, 32, 36, 42, 48, 56, 64, 72, 96, 120];
+const fonteNiveis = [14, 16, 18, 20, 22, 24, 28, 32, 36, 42, 48, 56, 64, 72, 96, 120];
 let fonteNivelAtual = 1; // 0=menor, 1=padrão, ...máx
 const fonteStorageKey = 'preferenciaFonte';
 
 // Aplica o tamanho da fonte em todos os textos relevantes
 function aplicarFonte() {
     const tamanho = fonteNiveis[fonteNivelAtual];
-    document.body.style.fontSize = tamanho + 'px';
-    // Aplica o tamanho explicitamente a todos os elementos de texto visíveis
-    document.querySelectorAll('*').forEach(el => {
-        if (
-            el.nodeType === 1 &&
-            (
-                el.tagName.match(/^(P|H1|H2|H3|H4|H5|H6|LABEL|INPUT|TEXTAREA|SELECT|BUTTON|A|LI|UL|OL|SPAN|DIV)$/i) ||
-                el.classList.contains('btn') ||
-                el.classList.contains('noticia-card') ||
-                el.classList.contains('banner-overlay') ||
-                el.classList.contains('img-lightbox-caption') ||
-                el.classList.contains('formulario')
-            )
-        ) {
-            el.style.fontSize = tamanho + 'px';
-        }
+    // Aplica em todos os elementos de texto visíveis, exceto elementos de navegação/menu
+    document.querySelectorAll('body, main, section, h1, h2, h3, h4, h5, h6, p, label, input, textarea, select, button, a, li, ul, ol, span, div, .btn, .noticia-card, .banner-overlay, .img-lightbox-caption, .formulario').forEach(el => {
+        el.style.fontSize = tamanho + 'px';
+    });
+    // Ajusta tamanho do menu hamburguer e botões de acessibilidade
+    document.querySelectorAll('#menu-toggle, #acessibilidade button').forEach(el => {
+        el.style.fontSize = (tamanho * 0.9) + 'px';
     });
     localStorage.setItem(fonteStorageKey, fonteNivelAtual);
 }
@@ -33,8 +24,10 @@ function setFonteNivel(novoNivel) {
     fonteNivelAtual = Math.max(0, Math.min(fonteNiveis.length - 1, novoNivel));
     aplicarFonte();
 }
-aumentarFonteBtn.addEventListener('click', () => setFonteNivel(fonteNivelAtual + 1));
-diminuirFonteBtn.addEventListener('click', () => setFonteNivel(fonteNivelAtual - 1));
+if (aumentarFonteBtn && diminuirFonteBtn) {
+    aumentarFonteBtn.addEventListener('click', () => setFonteNivel(fonteNivelAtual + 1));
+    diminuirFonteBtn.addEventListener('click', () => setFonteNivel(fonteNivelAtual - 1));
+}
 // Carrega preferência de fonte
 const fonteSalva = localStorage.getItem(fonteStorageKey);
 if (fonteSalva !== null && !isNaN(fonteSalva)) {
@@ -248,18 +241,28 @@ document.querySelectorAll('img[data-origem]').forEach(img => {
     });
 });
 
-// MENU HAMBURGUER
+// MENU HAMBURGUER LATERAL ESQUERDO
 const menuToggle = document.getElementById('menu-toggle');
 const menuList = document.getElementById('menu-list');
 if (menuToggle && menuList) {
     menuToggle.addEventListener('click', () => {
         const aberto = menuList.classList.toggle('menu-open');
-        menuToggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        if (aberto) {
+            document.body.classList.add('menu-open-overlay');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            // Foca o primeiro link do menu para acessibilidade
+            const firstLink = menuList.querySelector('a');
+            if (firstLink) firstLink.focus();
+        } else {
+            document.body.classList.remove('menu-open-overlay');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
     });
     // Fecha o menu ao clicar em um link
     menuList.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menuList.classList.remove('menu-open');
+            document.body.classList.remove('menu-open-overlay');
             menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
@@ -271,7 +274,17 @@ if (menuToggle && menuList) {
             e.target !== menuToggle
         ) {
             menuList.classList.remove('menu-open');
+            document.body.classList.remove('menu-open-overlay');
             menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+    // Fecha o menu com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuList.classList.contains('menu-open')) {
+            menuList.classList.remove('menu-open');
+            document.body.classList.remove('menu-open-overlay');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.focus();
         }
     });
 }
