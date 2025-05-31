@@ -23,16 +23,12 @@ body {
     padding: 0;
     line-height: 1.7;
     font-size: 16px;
-    background-image: var(--wood-pattern), var(--linen-pattern);
     background-size: cover, 400px;
     background-attachment: fixed;
     background-blend-mode: multiply;
-    position: relative;
     transition: background-color 0.3s, color 0.3s;
-    /* Evita scroll horizontal */
     overflow-x: hidden;
 }
-
 body::before {
     content: "";
     position: fixed;
@@ -42,12 +38,10 @@ body::before {
     z-index: 0;
     transition: background 0.3s;
 }
-
 body.dark-mode {
     --bg-color: var(--bg-dark);
     --text-color: var(--text-dark);
 }
-
 body.dark-mode::before {
     background: rgba(44, 36, 24, 0.85);
 }
@@ -65,14 +59,12 @@ header {
     top: 0;
     z-index: 10;
 }
-
 header nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
 }
-
 header nav ul {
     list-style-type: none;
     display: flex;
@@ -80,7 +72,6 @@ header nav ul {
     margin: 0;
     padding: 0 32px;
 }
-
 header nav a {
     text-decoration: none;
     color: #ffe7c2;
@@ -91,65 +82,14 @@ header nav a {
     border-radius: 8px;
     transition: background 0.2s, color 0.2s;
 }
-
 header nav a:hover,
 header nav a:focus {
     background: var(--secondary-color);
     color: #3e2c1a;
     outline: 2px solid var(--focus-outline);
 }
-
-/* Menu hamburguer */
 #menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #ffe7c2;
-    cursor: pointer;
-    margin-left: 16px;
-    margin-right: 16px;
-    z-index: 1001;
-}
-
-header nav ul.nav {
-    list-style-type: none;
-    display: flex;
-    gap: 28px;
-    margin: 0;
-    padding: 0 32px;
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
-    position: static;
-    flex-direction: row;
-    transition: none;
-}
-
-@media (max-width: 900px) {
-    #menu-toggle {
-        display: block;
-    }
-    header nav ul.nav {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(124,90,55,0.97);
-        border-radius: 0 0 12px 12px;
-        box-shadow: 0 2px 12px rgba(124,90,55,0.13);
-        z-index: 1000;
-        padding: 12px 0;
-    }
-    header nav ul.nav.menu-open {
-        display: flex;
-    }
-    body {
-        overflow-x: hidden;
-    }
+    display: none !important;
 }
 
 /* =========================
@@ -173,7 +113,6 @@ header nav ul.nav {
     overflow: hidden;
     margin-bottom: 0;
 }
-
 .banner-overlay {
     background: rgba(60, 40, 20, 0.55);
     padding: 48px 40px 32px 60px;
@@ -182,7 +121,6 @@ header nav ul.nav {
     margin-bottom: 40px;
     max-width: 600px;
 }
-
 .banner-overlay h1 {
     font-size: 3.2rem;
     color: #ffe7c2;
@@ -190,20 +128,17 @@ header nav ul.nav {
     text-shadow: 2px 2px 8px #7c5a37;
     letter-spacing: 2px;
 }
-
 .banner-overlay p {
     font-size: 1.4rem;
     color: #f5e2c0;
     margin-bottom: 28px;
     text-shadow: 1px 1px 4px #7c5a37;
 }
-
 .banner-buttons {
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
 }
-
 .banner-buttons .btn {
     background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
     color: #3e2c1a;
@@ -216,7 +151,6 @@ header nav ul.nav {
     box-shadow: 0 4px 12px rgba(60,40,20,0.13);
     transition: background 0.3s, color 0.3s, transform 0.2s;
 }
-
 .banner-buttons .btn:hover,
 .banner-buttons .btn:focus {
     background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
@@ -241,12 +175,10 @@ section {
     position: relative;
     z-index: 1;
 }
-
 body.dark-mode section {
     background: rgba(44, 36, 24, 0.93);
     border-color: var(--secondary-color);
 }
-
 section h2 {
     font-size: 2.3rem;
     color: var(--primary-color);
@@ -256,7 +188,6 @@ section h2 {
     font-family: 'Merriweather', 'Georgia', serif;
     text-shadow: 0 2px 8px rgba(140,106,67,0.08);
 }
-
 section p {
     font-size: 1.15rem;
     color: var(--text-color);
@@ -265,13 +196,10 @@ section p {
     line-height: 1.8;
     font-family: 'Georgia', serif;
 }
-
 body.dark-mode section h2,
 body.dark-mode section p {
     color: var(--text-dark);
 }
-
-/* Destaque de seção ativa */
 .section-ativa,
 section:target,
 #festejando.section-ativa,
@@ -282,7 +210,6 @@ section:target,
     filter: brightness(1.04) saturate(1.1) !important;
     z-index: 2;
 }
-
 body.dark-mode .section-ativa,
 body.dark-mode section:target,
 body.dark-mode #festejando.section-ativa,
@@ -309,13 +236,11 @@ body.dark-mode #festejando:target {
     margin-left: auto;
     margin-right: auto;
 }
-
 body.dark-mode .noticia-card {
     background: #2a2318;
     color: var(--text-dark);
     border-color: var(--secondary-color);
 }
-
 .noticia-card h3 {
     font-size: 1.25rem;
     margin-bottom: 13px;
@@ -323,17 +248,14 @@ body.dark-mode .noticia-card {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 .noticia-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .noticia-card ul li {
     margin-bottom: 10px;
 }
-
 .noticia-card ul li a {
     text-decoration: none;
     color: var(--primary-color);
@@ -343,7 +265,6 @@ body.dark-mode .noticia-card {
     border-bottom: 1.5px dotted var(--secondary-color);
     padding-bottom: 2px;
 }
-
 .noticia-card ul li a:hover,
 .noticia-card ul li a:focus {
     color: #b87b2e;
@@ -365,13 +286,11 @@ input, textarea, select {
     transition: border-color 0.3s, box-shadow 0.3s;
     margin-bottom: 10px;
 }
-
 input:focus, textarea:focus, select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 8px var(--primary-color);
     outline: none;
 }
-
 body.dark-mode input,
 body.dark-mode textarea,
 body.dark-mode select {
@@ -379,7 +298,6 @@ body.dark-mode select {
     color: var(--text-dark);
     border-color: var(--secondary-color);
 }
-
 body.dark-mode input:focus,
 body.dark-mode textarea:focus,
 body.dark-mode select:focus {
@@ -403,12 +321,10 @@ button, .btn {
     box-shadow: 0 4px 12px rgba(60,40,20,0.13);
     margin-top: 8px;
 }
-
 button:focus, .btn:focus {
     outline: 2px solid var(--focus-outline);
     outline-offset: 2px;
 }
-
 button:hover, .btn:hover {
     background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
     color: #fff;
@@ -427,7 +343,6 @@ button:hover, .btn:hover {
     gap: 12px;
     z-index: 1000;
 }
-
 #acessibilidade button {
     background: var(--primary-color);
     color: #fff8ef;
@@ -439,48 +354,94 @@ button:hover, .btn:hover {
     transition: background 0.3s;
     box-shadow: 0 2px 8px rgba(60,40,20,0.10);
 }
-
 #acessibilidade button:hover {
     background: var(--secondary-color);
     color: #3e2c1a;
 }
 
 /* =========================
-   CARROSSEL DE IMAGENS
+   CARROSSEL DE IMAGENS E GALERIA
    ========================= */
 .carousel {
     display: flex;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 24px;
+    gap: 32px;
     padding: 24px 0;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
-
-.carousel::-webkit-scrollbar {
-    height: 8px;
-}
-
-.carousel::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-}
-
 .carousel img {
     flex: 0 0 auto;
     width: 320px;
     height: 210px;
     object-fit: cover;
-    border-radius: 14px;
+    display: block;
+    margin: 18px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(124,90,55,0.13), 0 1.5px 6px rgba(60,40,20,0.08);
     border: 3px solid var(--secondary-color);
-    box-shadow: 0 4px 12px rgba(124,90,55,0.13);
-    transition: transform 0.3s, box-shadow 0.3s;
     background: #fff8ef;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    max-width: 98vw;
+}
+.carousel img:hover,
+.carousel img:focus {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 8px 32px rgba(124,90,55,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    border-color: var(--accent-color);
+    outline: 2px solid var(--accent-color);
 }
 
-.carousel img:hover {
-    transform: scale(1.07);
-    box-shadow: 0 8px 24px rgba(124,90,55,0.18);
+/* Imagens duplas centralizadas */
+.img-dupla {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 24px auto 12px auto;
+    width: 100%;
+    max-width: 900px;
+}
+.img-dupla img {
+    max-width: 320px;
+    width: 100%;
+    display: block;
+    margin: 18px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(124,90,55,0.13), 0 1.5px 6px rgba(60,40,20,0.08);
+    border: 3px solid var(--secondary-color);
+    background: #fff8ef;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.img-dupla img:hover,
+.img-dupla img:focus {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 8px 32px rgba(124,90,55,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    border-color: var(--accent-color);
+    outline: 2px solid var(--accent-color);
+}
+
+/* Imagens em seções */
+section img {
+    display: block;
+    margin: 18px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(124,90,55,0.13), 0 1.5px 6px rgba(60,40,20,0.08);
+    border: 3px solid var(--secondary-color);
+    background: #fff8ef;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    max-width: 98vw;
+    max-height: 350px;
+    object-fit: cover;
+}
+section img:hover,
+section img:focus {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 8px 32px rgba(124,90,55,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    border-color: var(--accent-color);
+    outline: 2px solid var(--accent-color);
 }
 
 /* =========================
@@ -498,14 +459,12 @@ footer {
     letter-spacing: 1px;
     box-shadow: 0 -2px 12px rgba(124,90,55,0.10);
 }
-
 footer a {
     color: #ffe7c2;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
-
 footer a:hover {
     color: var(--primary-color);
 }
@@ -527,8 +486,10 @@ footer a:hover {
         width: 220px;
         height: 140px;
     }
+    .img-dupla img {
+        max-width: 220px;
+    }
 }
-
 @media (max-width: 900px) {
     header nav ul {
         flex-direction: column;
@@ -573,17 +534,10 @@ footer a:hover {
         height: 70px;
         border-radius: 10px;
     }
-    .noticia-card {
-        padding: 16px 8px;
-        min-width: unset;
-        max-width: 100%;
-        border-radius: 10px;
-    }
-    .container, .row {
-        padding: 0 5px;
+    .img-dupla img {
+        max-width: 120px;
     }
 }
-
 @media (max-width: 600px) {
     header {
         padding: 8px 0 6px 0;
@@ -633,10 +587,16 @@ footer a:hover {
         margin-bottom: 12px;
         border-radius: 8px;
     }
-    .carousel img {
-        width: 90px;
-        height: 50px;
+    .carousel img,
+    .img-dupla img,
+    section img {
+        width: 90px !important;
+        height: 50px !important;
+        min-width: 60px;
+        min-height: 40px;
+        margin: 6px auto;
         border-radius: 6px;
+        max-height: 60px;
     }
     .noticia-card {
         padding: 10px 2px;
@@ -673,6 +633,11 @@ footer a:hover {
         font-size: 0.95rem;
         padding-bottom: 1px;
     }
+    .video-container iframe {
+        max-width: 99vw;
+        height: 54vw;
+        min-height: 140px;
+    }
 }
 
 /* =========================
@@ -687,21 +652,12 @@ img, iframe {
     border-radius: 8px;
 }
 
-/* === Destaque visual para todas as seções === */
-section {
-    box-shadow: 0 0 0 4px var(--accent-color), 0 6px 18px rgba(124,90,55,0.10);
-    border-color: var(--accent-color);
-    position: relative;
-    z-index: 1;
-}
-
 /* === Hover nas imagens: mostra a origem === */
 .img-origem-hover {
     position: relative;
     cursor: pointer;
     overflow: hidden;
 }
-
 .img-origem-hover::after {
     content: attr(data-origem);
     position: absolute;
@@ -719,7 +675,6 @@ section {
     border-radius: 0 0 8px 8px;
     z-index: 2;
 }
-
 .img-origem-hover:hover::after,
 .img-origem-hover:focus::after {
     opacity: 1;
@@ -778,38 +733,106 @@ body.high-contrast .img-lightbox-caption {
 }
 
 /* =========================
-   MELHORIAS DE FORMULÁRIO
+   MELHORIAS DE LIGHTBOX
    ========================= */
-.formulario-container {
+.img-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 20, 10, 0.92);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 0 16px;
-    width: 100%;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s;
+    padding: 32px 12px 24px 12px;
     box-sizing: border-box;
 }
+.img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: #fff;
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+    font-size: 2.2vw;
+}
+.img-lightbox-overlay .img-lightbox-caption {
+    color: #ffe7c2;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 8px #000;
+    max-width: 90vw;
+    word-break: break-word;
+    background: rgba(44,36,24,0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: bold;
+}
+@media (max-width: 600px) {
+    .img-lightbox-overlay img {
+        max-width: 98vw;
+        max-height: 50vh;
+        font-size: 4vw;
+    }
+    .img-lightbox-overlay .img-lightbox-caption {
+        font-size: 1.1rem;
+        padding: 6px 4vw;
+    }
+}
+
+/* =========================
+   MELHORIAS DE ESPAÇAMENTO MOBILE
+   ========================= */
+@media (max-width: 900px) {
+    body, html {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
+    section {
+        padding-left: 5vw !important;
+        padding-right: 5vw !important;
+        box-sizing: border-box;
+    }
+    .formulario-container {
+        padding-left: 2vw !important;
+        padding-right: 2vw !important;
+    }
+}
+@media (max-width: 600px) {
+    section {
+        padding-left: 3vw !important;
+        padding-right: 3vw !important;
+    }
+    .formulario-container {
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+    }
+}
+
+/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
 .formulario {
+    margin: 24px auto 24px auto;
+    padding: 32px 32px 24px 32px;
+    max-width: 480px;
     background: #fff8ef;
     border-radius: 18px;
-    padding: 40px 32px 32px 32px;
-    max-width: 480px;
-    margin: 0 auto;
     box-shadow: 0 4px 24px rgba(124,90,55,0.13);
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: 100%;
-    box-sizing: border-box;
     border: 2px solid var(--accent-color);
     position: relative;
-}
-body.dark-mode .formulario {
-    background: #2a2318;
-}
-body.high-contrast .formulario {
-    background: #000 !important;
-    color: #fff !important;
-    border: 2px solid #ff0 !important;
 }
 .formulario h2 {
     text-align: center;
@@ -839,25 +862,194 @@ body.high-contrast .formulario {
     color: #3e2c1a;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
-body.dark-mode .formulario input,
-body.dark-mode .formulario textarea,
-body.dark-mode .formulario select {
-    background: #2a2318;
-    color: var(--text-dark);
+.formulario button {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 1.15rem;
+    padding: 14px 0;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
+    color: #3e2c1a;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
 }
-body.high-contrast .formulario input,
-body.high-contrast .formulario textarea,
-body.high-contrast .formulario select {
-    background: #000 !important;
-    color: #fff !important;
-    border: 2px solid #ff0 !important;
+.formulario button:hover,
+.formulario button:focus {
+    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
+    color: #fff;
+    outline: 2px solid var(--focus-outline);
+    transform: scale(1.04);
 }
-.formulario input:focus,
-.formulario textarea:focus,
-.formulario select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 8px var(--primary-color);
-    outline: none;
+.form-feedback {
+    color: #b00;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    text-align: center;
+    min-height: 20px;
+}
+.formulario select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px 18px;
+}
+.formulario textarea {
+    resize: vertical;
+    min-height: 90px;
+    max-height: 300px;
+}
+
+/* Responsividade do formulário */
+@media (max-width: 600px) {
+    .formulario {
+        padding: 12px 4vw 12px 4vw;
+        border-radius: 10px;
+        max-width: 98vw;
+    }
+    .formulario h2 {
+        font-size: 1.2rem;
+    }
+    .formulario input,
+    .formulario textarea,
+    .formulario select {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
+/* =========================
+   MELHORIAS DE LIGHTBOX
+   ========================= */
+.img-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(30, 20, 10, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    animation: fadeIn 0.2s;
+    padding: 32px 12px 24px 12px;
+    box-sizing: border-box;
+}
+.img-lightbox-overlay img {
+    max-width: 90vw;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    background: #fff;
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+    font-size: 2.2vw;
+}
+.img-lightbox-overlay .img-lightbox-caption {
+    color: #ffe7c2;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 1.3rem;
+    text-shadow: 0 2px 8px #000;
+    max-width: 90vw;
+    word-break: break-word;
+    background: rgba(44,36,24,0.7);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: bold;
+}
+@media (max-width: 600px) {
+    .img-lightbox-overlay img {
+        max-width: 98vw;
+        max-height: 50vh;
+        font-size: 4vw;
+    }
+    .img-lightbox-overlay .img-lightbox-caption {
+        font-size: 1.1rem;
+        padding: 6px 4vw;
+    }
+}
+
+/* =========================
+   MELHORIAS DE ESPAÇAMENTO MOBILE
+   ========================= */
+@media (max-width: 900px) {
+    body, html {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
+    section {
+        padding-left: 5vw !important;
+        padding-right: 5vw !important;
+        box-sizing: border-box;
+    }
+    .formulario-container {
+        padding-left: 2vw !important;
+        padding-right: 2vw !important;
+    }
+}
+@media (max-width: 600px) {
+    section {
+        padding-left: 3vw !important;
+        padding-right: 3vw !important;
+    }
+    .formulario-container {
+        padding-left: 1vw !important;
+        padding-right: 1vw !important;
+    }
+}
+
+/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
+.formulario {
+    margin: 24px auto 24px auto;
+    padding: 32px 32px 24px 32px;
+    max-width: 480px;
+    background: #fff8ef;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 2px solid var(--accent-color);
+    position: relative;
+}
+.formulario h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--primary-color);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+.formulario label {
+    text-align: left;
+    margin-bottom: 4px;
+    font-weight: bold;
+    display: block;
+    color: var(--primary-color);
+}
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    font-size: 1.08rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    padding: 10px;
+    background: #fff;
+    color: #3e2c1a;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 .formulario button {
     width: 100%;
@@ -1093,1104 +1285,36 @@ body.high-contrast .formulario select {
 }
 
 /* =========================
-   MELHORIAS DE LIGHTBOX
+   RESPONSIVIDADE DO VÍDEO
    ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
+.video-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    margin: 32px 0 0 0;
 }
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
+.video-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(124,90,55,0.13);
 }
 
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
+/* Responsividade para vídeo em telas pequenas */
 @media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
-    }
-}
-@media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
-    }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
+    .video-container iframe {
         max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
+        height: 56vw;
+        min-height: 180px;
     }
 }
 @media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
+    .video-container iframe {
+        max-width: 99vw;
+        height: 54vw;
+        min-height: 140px;
     }
 }
 
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
-    }
-}
-@media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
-    }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
-    }
-}
-@media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
-    }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
-    }
-}
-@media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
-    }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHORIAS DE ESPAÇAMENTO MOBILE
-   ========================= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
-    }
-    section {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
-    }
-    .formulario-container {
-        padding-left: 2vw !important;
-        padding-right: 2vw !important;
-    }
-}
-@media (max-width: 600px) {
-    section {
-        padding-left: 3vw !important;
-        padding-right: 3vw !important;
-    }
-    .formulario-container {
-        padding-left: 1vw !important;
-        padding-right: 1vw !important;
-    }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
-    }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
-        font-size: 1rem;
-        padding: 8px;
-    }
-}
-
-/* =========================
-   MELHORIAS DE LIGHTBOX
-   ========================= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin-top: 18px;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin-bottom: 0;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
-        max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
-    }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
-    }
-}
-
-/* =========================
-   MELHOR
