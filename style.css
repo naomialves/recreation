@@ -580,6 +580,8 @@ button:hover, .btn:hover {
     justify-content: center;
     align-items: center;
     width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 .carousel img {
     flex: 0 0 auto;
@@ -593,13 +595,7 @@ button:hover, .btn:hover {
     border: 3px solid var(--secondary-color);
     background: #fff8ef;
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-}
-.carousel img:hover,
-.carousel img:focus {
-    transform: scale(1.04) rotate(-1deg);
-    box-shadow: 0 8px 32px rgba(124,90,55,0.18), 0 2px 12px rgba(0,0,0,0.10);
-    border-color: var(--accent-color);
-    outline: 2px solid var(--accent-color);
+    scroll-snap-align: center;
 }
 
 /* Imagens duplas centralizadas */
@@ -643,7 +639,6 @@ section img {
     transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
     max-width: 98vw;
     max-height: 350px;
-    object-fit: cover;
 }
 section img:hover,
 section img:focus {
@@ -926,4 +921,312 @@ footer a:hover {
         font-size: 1.1rem;
         padding: 28px 10px 18px 10px;
     }
+}
+
+/* ======== UTILITÁRIOS DE CONTAINER E ESPAÇAMENTO ======== */
+.container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.px-3 { padding-left: 1rem !important; padding-right: 1rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+.text-center { text-align: center !important; }
+.img-fluid { max-width: 100%; height: auto; display: block; }
+
+/* ======== CARROSSEL COM SCROLL-SNAP ======== */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 32px;
+    padding: 24px 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+.carousel img {
+    flex: 0 0 auto;
+    width: 320px;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    margin: 18px auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(124,90,55,0.13), 0 1.5px 6px rgba(60,40,20,0.08);
+    border: 3px solid var(--secondary-color);
+    background: #fff8ef;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+/* ======== FLEXBOX PARA LAYOUTS FLEXÍVEIS ======== */
+.campo-cidade-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+.campo-cidade-img, .campo-cidade-texto {
+    flex: 1 1 320px;
+    min-width: 260px;
+    max-width: 480px;
+}
+@media (max-width: 900px) {
+    .campo-cidade-flex {
+        flex-direction: column;
+        gap: 18px;
+    }
+    .campo-cidade-img, .campo-cidade-texto {
+        max-width: 98vw;
+    }
+}
+
+/* ======== MELHORIAS DE FORMULÁRIO ======== */
+.formulario-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.formulario {
+    background: #fff8ef;
+    border: 2px solid var(--secondary-color);
+    border-radius: 18px;
+    padding: 32px 32px 24px 32px;
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 6px 18px rgba(124,90,55,0.10);
+}
+body.dark-mode .formulario {
+    background: #2a2318;
+    color: var(--text-dark);
+    border-color: var(--secondary-color);
+}
+
+/* ======== AJUSTES DE TIPOGRAFIA E TÍTULOS ======== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.3rem; }
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; }
+    h3 { font-size: 1rem; }
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout fluido */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Container padrão */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Cabeçalho */
+header {
+  background: #4caf50;
+  color: #fff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Menu */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Botão do menu (mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  position: absolute;
+  right: 1rem;
+  top: 1.2rem;
+  cursor: pointer;
+}
+
+/* Seções */
+section {
+  padding: 3rem 0;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+/* Títulos */
+h2 {
+  text-align: center;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+/* Textos */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Imagens */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Galeria */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-snap-type: x mandatory;
+  padding: 1rem;
+}
+.carousel img {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border-radius: 10px;
+  max-height: 250px;
+}
+
+/* Flex */
+.campo-cidade-flex,
+.img-dupla {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.campo-cidade-flex img,
+.img-dupla img {
+  max-width: 300px;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+input,
+textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Rodapé */
+footer {
+  background: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 12px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .campo-cidade-flex,
+  .img-dupla {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #388e3c;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  nav ul li {
+    margin: 1rem 0;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
 }
