@@ -166,12 +166,24 @@ html, body {
         color: #ffe7c2;
         border-radius: 0;
         background: none;
-        transition: background 0.2s, color 0.2s;
+        transition: background 0.2s, color 0.2s, border-color 0.2s;
+        outline: none;
+        border-left: 4px solid transparent;
     }
     header nav ul.nav li a:focus,
     header nav ul.nav li a:hover {
         background: var(--secondary-color);
         color: #3e2c1a;
+        border-left: 4px solid var(--accent-color);
+        outline: 2px solid var(--focus-outline);
+        outline-offset: -2px;
+    }
+    header nav ul.nav li a.menu-active,
+    header nav ul.nav li a[aria-current="true"] {
+        background: var(--accent-color);
+        color: #3e2c1a;
+        border-left: 4px solid var(--primary-color);
+        font-weight: bold;
     }
     /* Escurece o fundo ao abrir o menu */
     body.menu-open-overlay::before {
@@ -666,245 +678,252 @@ footer a:hover {
     color: var(--primary-color);
 }
 
-/* =========================
-   RESPONSIVIDADE E MENU HAMBURGUER
-   ========================= */
+/* ======= RESPONSIVIDADE POR DISPOSITIVO ======= */
 
-/* ======= MELHORIAS DE ESPAÇAMENTO LATERAL MOBILE ======= */
-@media (max-width: 900px) {
-    body, html {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box;
+/* Celulares pequenos (até 575px) */
+@media (max-width: 575.98px) {
+    html, body {
+        font-size: 15px;
     }
-    main, section, .formulario-container, .formulario, .carousel, .img-dupla {
-        padding-left: 5vw !important;
-        padding-right: 5vw !important;
-        box-sizing: border-box;
+    header {
+        padding: 8px 0 4px 0;
     }
-}
-@media (max-width: 600px) {
-    main, section, .formulario-container, .formulario, .carousel, .img-dupla {
-        padding-left: 4vw !important;
-        padding-right: 4vw !important;
+    .banner-overlay {
+        padding: 12px 4vw 10px 4vw;
+        border-radius: 0 0 12px 0;
+        margin-bottom: 10px;
+        max-width: 99vw;
     }
-}
-
-/* ======= MELHORIA FORMULÁRIO DE CONTATO ======= */
-.formulario-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-.formulario {
-    margin: 24px auto 24px auto;
-    padding: 32px 32px 24px 32px;
-    max-width: 480px;
-    background: #fff8ef;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(124,90,55,0.13);
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    border: 2px solid var(--accent-color);
-    position: relative;
-}
-.formulario h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: var(--primary-color);
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-.formulario label {
-    text-align: left;
-    margin-bottom: 4px;
-    font-weight: bold;
-    display: block;
-    color: var(--primary-color);
-}
-.formulario input,
-.formulario textarea,
-.formulario select {
-    width: 100%;
-    margin-bottom: 18px;
-    box-sizing: border-box;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    padding: 10px;
-    background: #fff;
-    color: #3e2c1a;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.formulario button {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 1.15rem;
-    padding: 14px 0;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #bfa074 60%, #7c5a37 100%);
-    color: #3e2c1a;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 2px 8px rgba(124,90,55,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-.formulario button:hover,
-.formulario button:focus {
-    background: linear-gradient(90deg, #7c5a37 60%, #bfa074 100%);
-    color: #fff;
-    outline: 2px solid var(--focus-outline);
-    transform: scale(1.04);
-}
-.form-feedback {
-    color: #b00;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    text-align: center;
-    min-height: 20px;
-}
-.formulario select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='16' height='16' fill='gray' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 18px 18px;
-}
-.formulario textarea {
-    resize: vertical;
-    min-height: 90px;
-    max-height: 300px;
-}
-@media (max-width: 600px) {
-    .formulario {
-        padding: 12px 4vw 12px 4vw;
-        border-radius: 10px;
-        max-width: 98vw;
+    .banner-overlay h1 {
+        font-size: 1.3rem;
     }
-    .formulario h2 {
-        font-size: 1.2rem;
-    }
-    .formulario input,
-    .formulario textarea,
-    .formulario select {
+    .banner-overlay p {
         font-size: 1rem;
-        padding: 8px;
+    }
+    .banner-buttons .btn {
+        padding: 8px 10px;
+        font-size: 0.98rem;
+    }
+    section {
+        padding: 6px 2vw 4px 2vw;
+        margin: 6px 0;
+        border-radius: 6px;
+    }
+    .formulario {
+        padding: 6px 2vw;
+        border-radius: 7px;
+        max-width: 99vw;
+    }
+    .carousel {
+        gap: 4px;
+        padding: 6px 0;
+    }
+    .img-dupla {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .noticia-card {
+        padding: 14px 8px;
+        font-size: 0.98rem;
+    }
+    footer {
+        font-size: 0.92rem;
+        padding: 12px 2vw 8px 2vw;
     }
 }
 
-/* ======= ALTO CONTRASTE ======= */
-body.high-contrast {
-    --bg-color: #000 !important;
-    --text-color: #fff !important;
-    --primary-color: #fff !important;
-    --secondary-color: #ff0 !important;
-    --accent-color: #ff0 !important;
-    --bg-dark: #000 !important;
-    --text-dark: #fff !important;
-    --focus-outline: #ff0 !important;
-    background-color: #000 !important;
-    color: #fff !important;
-}
-body.high-contrast * {
-    background: none !important;
-    color: #fff !important;
-    border-color: #ff0 !important;
-    text-shadow: none !important;
-    box-shadow: none !important;
-}
-body.high-contrast a, body.high-contrast a:visited {
-    color: #0ff !important;
-    text-decoration: underline !important;
-}
-body.high-contrast header,
-body.high-contrast footer {
-    background: #000 !important;
-    color: #fff !important;
-    border-color: #ff0 !important;
-}
-body.high-contrast .btn,
-body.high-contrast button {
-    background: #000 !important;
-    color: #ff0 !important;
-    border: 2px solid #ff0 !important;
-}
-body.high-contrast input,
-body.high-contrast textarea,
-body.high-contrast select {
-    background: #000 !important;
-    color: #fff !important;
-    border: 2px solid #ff0 !important;
-}
-body.high-contrast .img-lightbox-overlay {
-    background: #000 !important;
-}
-body.high-contrast .img-lightbox-caption {
-    color: #ff0 !important;
-}
-
-/* ======= LIGHTBOX MELHORADO ======= */
-.img-lightbox-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(30, 20, 10, 0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    cursor: zoom-out;
-    animation: fadeIn 0.2s;
-    padding: 32px 12px 24px 12px;
-    box-sizing: border-box;
-}
-.img-lightbox-overlay img {
-    max-width: 90vw;
-    max-height: 70vh;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-    background: #fff;
-    padding: 8px;
-    margin: 0 auto;
-    display: block;
-    object-fit: contain;
-    font-size: 2.2vw;
-    /* Centraliza verticalmente e horizontalmente */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.img-lightbox-overlay .img-lightbox-caption {
-    color: #ffe7c2;
-    text-align: center;
-    margin: 18px auto 0 auto;
-    font-size: 1.3rem;
-    text-shadow: 0 2px 8px #000;
-    max-width: 90vw;
-    word-break: break-word;
-    background: rgba(44,36,24,0.7);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-family: 'Merriweather', 'Georgia', serif;
-    font-weight: bold;
-    display: block;
-    left: 50%;
-    transform: translateX(-50%);
-    position: relative;
-}
-@media (max-width: 600px) {
-    .img-lightbox-overlay img {
+/* Celulares maiores e tablets pequenos (576px a 767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    html, body {
+        font-size: 16px;
+    }
+    .banner-overlay {
+        padding: 18px 6vw 12px 6vw;
+        border-radius: 0 0 16px 0;
+        margin-bottom: 16px;
         max-width: 98vw;
-        max-height: 50vh;
-        font-size: 4vw;
     }
-    .img-lightbox-overlay .img-lightbox-caption {
-        font-size: 1.1rem;
-        padding: 6px 4vw;
+    .banner-overlay h1 {
+        font-size: 1.7rem;
+    }
+    .banner-overlay p {
+        font-size: 1.08rem;
+    }
+    .banner-buttons .btn {
+        padding: 10px 14px;
+        font-size: 1rem;
+    }
+    section {
+        padding: 10px 3vw 8px 3vw;
+        margin: 10px 0;
+        border-radius: 8px;
+    }
+    .formulario {
+        padding: 10px 3vw;
+        border-radius: 8px;
+        max-width: 98vw;
+    }
+    .carousel {
+        gap: 8px;
+        padding: 10px 0;
+    }
+    .img-dupla {
+        gap: 10px;
+    }
+    .noticia-card {
+        padding: 18px 12px;
+        font-size: 1rem;
+    }
+    footer {
+        font-size: 0.98rem;
+        padding: 16px 3vw 10px 3vw;
     }
 }
 
+/* Tablets (768px a 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    html, body {
+        font-size: 17px;
+    }
+    .banner-overlay {
+        padding: 24px 8vw 18px 8vw;
+        border-radius: 0 0 20px 0;
+        margin-bottom: 20px;
+        max-width: 96vw;
+    }
+    .banner-overlay h1 {
+        font-size: 2.1rem;
+    }
+    .banner-overlay p {
+        font-size: 1.18rem;
+    }
+    .banner-buttons .btn {
+        padding: 12px 18px;
+        font-size: 1.08rem;
+    }
+    section {
+        padding: 18px 4vw 12px 4vw;
+        margin: 16px 0;
+        border-radius: 10px;
+    }
+    .formulario {
+        padding: 16px 4vw;
+        border-radius: 10px;
+        max-width: 95vw;
+    }
+    .carousel {
+        gap: 12px;
+        padding: 14px 0;
+    }
+    .img-dupla {
+        gap: 14px;
+    }
+    .noticia-card {
+        padding: 22px 16px;
+        font-size: 1.05rem;
+    }
+    footer {
+        font-size: 1rem;
+        padding: 20px 4vw 14px 4vw;
+    }
+}
+
+/* Notebooks (992px a 1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    html, body {
+        font-size: 18px;
+    }
+    .banner-overlay {
+        padding: 32px 10vw 24px 10vw;
+        border-radius: 0 0 24px 0;
+        margin-bottom: 28px;
+        max-width: 90vw;
+    }
+    .banner-overlay h1 {
+        font-size: 2.5rem;
+    }
+    .banner-overlay p {
+        font-size: 1.25rem;
+    }
+    .banner-buttons .btn {
+        padding: 14px 22px;
+        font-size: 1.12rem;
+    }
+    section {
+        padding: 28px 6vw 18px 6vw;
+        margin: 24px 0;
+        border-radius: 14px;
+    }
+    .formulario {
+        padding: 22px 6vw;
+        border-radius: 14px;
+        max-width: 80vw;
+    }
+    .carousel {
+        gap: 18px;
+        padding: 18px 0;
+    }
+    .img-dupla {
+        gap: 18px;
+    }
+    .noticia-card {
+        padding: 26px 18px;
+        font-size: 1.1rem;
+    }
+    footer {
+        font-size: 1.05rem;
+        padding: 24px 6vw 16px 6vw;
+    }
+}
+
+/* Desktop (>=1200px) */
+@media (min-width: 1200px) {
+    html, body {
+        font-size: 19px;
+    }
+    .banner-overlay {
+        padding: 48px 40px 32px 60px;
+        border-radius: 0 0 32px 0;
+        margin-bottom: 40px;
+        max-width: 600px;
+    }
+    .banner-overlay h1 {
+        font-size: 3.2rem;
+    }
+    .banner-overlay p {
+        font-size: 1.4rem;
+    }
+    .banner-buttons .btn {
+        padding: 12px 28px;
+        font-size: 1.1rem;
+    }
+    section {
+        padding: 48px 24px 36px 24px;
+        margin: 38px auto 0 auto;
+        border-radius: 18px;
+        max-width: 1100px;
+    }
+    .formulario {
+        padding: 32px 32px 24px 32px;
+        border-radius: 18px;
+        max-width: 480px;
+    }
+    .carousel {
+        gap: 32px;
+        padding: 24px 0;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .img-dupla {
+        gap: 32px;
+        max-width: 900px;
+    }
+    .noticia-card {
+        padding: 26px 20px;
+        font-size: 1.15rem;
+    }
+    footer {
+        font-size: 1.1rem;
+        padding: 28px 10px 18px 10px;
+    }
+}
