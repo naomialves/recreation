@@ -13,17 +13,14 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 ## 🚀 Recursos e Funcionalidades
 
 - Design responsivo e moderno
-- Alternância entre **modo claro**, **modo escuro** e **alto contraste**
+- Alternância entre **modo claro** e **modo escuro**
 - Carrossel de imagens automático e interativo
 - Galeria com efeito lightbox: clique na imagem para ampliar e veja a origem ao passar o mouse
 - Destaque visual em todas as seções do site
 - Efeitos visuais como parallax e destaque de seção visível
 - Navegação suave para links internos
-- Botões de acessibilidade para ajuste de fonte (com múltiplos níveis, inclusive tamanhos muito grandes)
-- Menu hamburguer para dispositivos móveis
+- Botões de acessibilidade para ajuste de fonte
 - Seções informativas sobre o campo, cidade, festejos, notícias e contato
-- Formulário de contato com feedback visual e validação
-- Totalmente acessível para leitores de tela
 
 ---
 
@@ -51,25 +48,16 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 
 - [Pixabay – Campo](https://pixabay.com/pt/images/search/campo/)
 - [Pixabay – Cidade](https://pixabay.com/pt/images/search/cidade/)
-- Imagens livres de direitos autorais
-
----
-
-## ♿️ Acessibilidade
-
-- Ajuste de fonte para todos os textos, inclusive tamanhos extragrandes
-- Alto contraste para pessoas com baixa visão
-- Navegação por teclado e leitores de tela
-- Feedback visual em formulários
+-  imagens livres de direitos autorais
 
 ---
 
 ## 🤝 Ajuda com a produção do site
 
-- [ChatGPT - sugestões e correções](https://chat.openai.com/)
+- [CHATGPT - CORREÇÃO].(https://chatgpt.com/)
 
----
-
+  ---
+  
 ## 🖥️ Como clonar e rodar localmente
 
 ```bash
