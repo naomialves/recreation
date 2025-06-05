@@ -63,55 +63,50 @@ altoContrasteBtn.addEventListener('click', () => {
 // =========================
 document.querySelectorAll("form input, form textarea").forEach(input => {
     input.addEventListener("focus", () => {
-        input.style.borderColor = "var(--secondary-color)";
-        input.style.boxShadow = "0 0 5px var(--secondary-color)";
+        input.classList.add("input-focus");
     });
     input.addEventListener("blur", () => {
-        input.style.borderColor = "";
-        input.style.boxShadow = "";
+        input.classList.remove("input-focus");
     });
 });
 
 // =========================
-// FEEDBACK DE ENVIO DO FORMULÁRIO
-// =========================
+// FEEDBACK DE ENVIO DO FORMULÁRIO (mensagem mais descritiva)
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form[action*="formsubmit"]');
+    const feedback = document.getElementById('form-feedback');
     if (form) {
         form.addEventListener('submit', function (e) {
             // Exibe mensagem de obrigada e impede envio real para visualização local
-            if (!form.querySelector('.form-obrigada')) {
+            if (feedback && !feedback.textContent) {
                 e.preventDefault();
-                const span = document.createElement('span');
-                span.className = 'form-obrigada';
-                span.textContent = 'Obrigada pelo contato!';
-                span.style.display = 'block';
-                span.style.margin = '18px 0 0 0';
-                span.style.fontWeight = 'bold';
-                span.style.color = 'var(--primary-color)';
-                span.style.fontSize = '1.2em';
-                form.appendChild(span);
-                setTimeout(() => { span.remove(); }, 4000);
+                feedback.textContent = 'Mensagem enviada com sucesso! Obrigada pelo contato.';
+                feedback.style.display = 'block';
+                setTimeout(() => { feedback.textContent = ''; }, 4000);
             }
         });
     }
 });
 
 // =========================
-// SCROLL SUAVE PARA LINKS INTERNOS
+// SCROLL SUAVE PARA LINKS INTERNOS E SKIP LINK
 // =========================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"], .skip-link').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth" });
+        const href = this.getAttribute("href");
+        if (href && href.startsWith("#")) {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+                target.focus && target.focus();
+            }
         }
     });
 });
 
 // =========================
-// CARROSSEL AUTOMÁTICO
+// CARROSSEL AUTOMÁTICO E ACESSÍVEL
 // =========================
 const carousel = document.querySelector('.carousel');
 let isScrolling = false;
@@ -137,6 +132,66 @@ if (carousel) {
         isScrolling = false;
         carouselInterval = setInterval(autoScrollCarousel, 3000);
     });
+
+    // Controles acessíveis
+    const prevBtn = carousel.querySelector('.carousel-control.prev');
+    const nextBtn = carousel.querySelector('.carousel-control.next');
+    const imgs = carousel.querySelectorAll('img');
+    let currentIndex = 0;
+
+    function showImage(idx) {
+        if (!imgs.length) return;
+        imgs.forEach((img, i) => {
+            img.style.display = window.innerWidth <= 900 ? 'none' : 'block';
+            img.classList.remove('active');
+            if (i === idx) {
+                img.style.display = 'block';
+                img.classList.add('active');
+            }
+        });
+        currentIndex = idx;
+        const desc = document.getElementById('carousel-desc');
+        if (desc) desc.textContent = imgs[idx].alt;
+    }
+
+    // Inicializa carrossel acessível
+    if (prevBtn && nextBtn && imgs.length) {
+        // Mostra apenas a primeira imagem em telas pequenas
+        imgs.forEach((img, i) => {
+            if (window.innerWidth <= 900) {
+                img.style.display = i === 0 ? 'block' : 'none';
+                img.classList.toggle('active', i === 0);
+            } else {
+                img.style.display = 'block';
+                img.classList.remove('active');
+            }
+        });
+        prevBtn.addEventListener('click', () => {
+            showImage((currentIndex - 1 + imgs.length) % imgs.length);
+        });
+        nextBtn.addEventListener('click', () => {
+            showImage((currentIndex + 1) % imgs.length);
+        });
+        prevBtn.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                showImage((currentIndex - 1 + imgs.length) % imgs.length);
+            }
+        });
+        nextBtn.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                showImage((currentIndex + 1) % imgs.length);
+            }
+        });
+        carousel.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        });
+
+        // Atualiza exibição ao redimensionar
+        window.addEventListener('resize', () => {
+            showImage(currentIndex);
+        });
+    }
 }
 
 // =========================
@@ -213,6 +268,7 @@ if (menuToggle && menuList) {
     menuToggle.addEventListener('click', function () {
         const aberto = menuList.classList.toggle('menu-open');
         menuToggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        if (aberto) menuList.querySelector('a')?.focus();
     });
 
     // Fecha o menu ao clicar em um link
@@ -224,4 +280,31 @@ if (menuToggle && menuList) {
             }
         });
     });
+
+    // Fecha o menu ao pressionar ESC ou ao perder o foco
+    menuList.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            menuList.classList.remove('menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.focus();
+        }
+    });
+    menuList.addEventListener('focusout', (e) => {
+        if (!menuList.contains(e.relatedTarget)) {
+            menuList.classList.remove('menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 }
+
+// =========================
+// FEEDBACK VISUAL FORMULÁRIO - MELHORADO
+// =========================
+document.querySelectorAll("form input, form textarea").forEach(input => {
+    input.addEventListener("focus", () => {
+        input.classList.add("input-focus");
+    });
+    input.addEventListener("blur", () => {
+        input.classList.remove("input-focus");
+    });
+});

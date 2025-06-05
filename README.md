@@ -1,6 +1,7 @@
-# Site Agrinho 2025 – Festejando a Conexão Campo-Cidade
+# 🌾 Agrinho 2025 - Conexão Campo-Cidade
 
-Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festejando a Conexão Campo-Cidade"**. O objetivo é destacar a importância da união entre o meio rural e urbano, promovendo a valorização das duas realidades.
+
+Site desenvolvido para o projeto Agrinho 2025, com o tema "Festejando a Conexão Campo-Cidade", promovendo a valorização das relações entre o meio rural e urbano através de uma abordagem interativa, educativa e visualmente moderna.
 
 ---
 
@@ -8,19 +9,20 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 
 [https://naomialves.github.io/agrinho/](https://naomialves.github.io/agrinho/)
 
+[https://agrinho-nine-beige.vercel.app/](https://agrinho-nine-beige.vercel.app/)
+
 ---
 
 ## 🚀 Recursos e Funcionalidades
 
-- Design responsivo e moderno
-- Alternância entre **modo claro** e **modo escuro**
-- Carrossel de imagens automático e interativo
-- Galeria com efeito lightbox: clique na imagem para ampliar e veja a origem ao passar o mouse
-- Destaque visual em todas as seções do site
-- Efeitos visuais como parallax e destaque de seção visível
-- Navegação suave para links internos
-- Botões de acessibilidade para ajuste de fonte
-- Seções informativas sobre o campo, cidade, festejos, notícias e contato
+- Design totalmente responsivo, sem rolagem lateral em dispositivos móveis
+- Alternância entre **modo claro**, **modo escuro** e **alto contraste**
+- Ajuste de tamanho de fonte para acessibilidade
+- Carrossel de imagens interativo e galeria com efeito lightbox 
+- Destaque visual para seções ativas e navegação suave entre âncoras
+- Seções informativas sobre campo, cidade, festejos, notícias e contato
+- Formulário de contato funcional com proteção contra spam
+- Código limpo, sem frameworks, apenas HTML5, CSS3 e JavaScript puro
 
 ---
 
@@ -44,20 +46,22 @@ Este site foi desenvolvido para o projeto **Agrinho 2025**, com o tema **"Festej
 
 ---
 
-## 📷 Imagens
+## 📷 Imagens e Videos
 
 - [Pixabay – Campo](https://pixabay.com/pt/images/search/campo/)
 - [Pixabay – Cidade](https://pixabay.com/pt/images/search/cidade/)
--  imagens livres de direitos autorais
+- [Sistema CNA/Senar – Vídeo educativo](https://www.youtube.com/@sistemacnasenar)
+
+- Imagens livres de direitos autorais
 
 ---
 
-## 🤝 Ajuda com a produção do site
+## 🤝 Ajuda e correção ortográfica
 
-- [CHATGPT - CORREÇÃO].(https://chatgpt.com/)
-
-  ---
+- [ChatGPT – Correção e sugestões de código](https://chat.openai.com/)
   
+---
+
 ## 🖥️ Como clonar e rodar localmente
 
 ```bash

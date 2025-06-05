@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Conexão Campo-Cidade: Unindo o melhor do campo e da cidade para um futuro sustentável.">
     <meta name="author" content="Naomi">
+    <meta name="keywords" content="campo, cidade, conexão, sustentabilidade, agricultura, cultura urbana, rural, agroecologia, feira, notícias, galeria, contato, Brasil, desenvolvimento sustentável, integração campo-cidade">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Conexão Campo-Cidade">
+    <meta property="og:description" content="Unindo o melhor do campo e da cidade para um futuro sustentável.">
+    <meta property="og:image" content="img/banner-rural.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://agrinho-site-sucesso.vercel.app/">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conexão Campo-Cidade">
+    <meta name="twitter:description" content="Unindo o melhor do campo e da cidade para um futuro sustentável.">
+    <meta name="twitter:image" content="img/banner-rural.jpg">
     <title>Conexão Campo-Cidade</title>
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
+    <!-- Skip link para acessibilidade -->
+    <a href="#inicio" class="skip-link" tabindex="0">Pular para o conteúdo principal</a>
     <!-- Header -->
     <header>
         <nav aria-label="Menu principal">
@@ -20,7 +34,7 @@
                 <span class="hamburguer-bar"></span>
             </button>
             <ul class="nav" id="menu-list">
-                <li><a href="#inicio">Início</a></li>
+                <li><a href="#inicio" aria-current="page">Início</a></li>
                 <li><a href="#campo">Campo</a></li>
                 <li><a href="#cidade">Cidade</a></li>
                 <li><a href="#festejando">Festejando</a></li>
@@ -40,7 +54,7 @@
 
     <!-- Banner -->
     <section id="banner" aria-label="Banner principal">
-        <img src="img/banner-rural.jpg" alt="Banner rural" class="banner-img" style="display:none;">
+        <img src="img/banner-rural.jpg" alt="Banner rural" class="banner-img" style="display:none;" width="1920" height="700" decoding="async">
         <div class="banner-overlay">
             <h1>Conexão Campo-Cidade</h1>
             <p>Unindo o melhor do campo e da cidade para um futuro sustentável.</p>
@@ -54,105 +68,106 @@
     </section>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content" tabindex="-1">
         <!-- Seção Início -->
-        <section id="inicio" aria-label="Início">
+        <section id="inicio" aria-label="Início" role="region" aria-labelledby="inicio-titulo">
             <div class="container text-center">
-                <h1>Bem-vindo à Conexão Campo-Cidade</h1>
+                <h2 id="inicio-titulo">Bem-vindo à Conexão Campo-Cidade</h2>
                 <p>Explore a harmonia entre o campo e a cidade.</p>
                 <a href="#campo" class="btn btn-primary">Saiba Mais</a>
             </div>
         </section>
 
         <!-- Seção Campo-Cidade -->
-        <section id="campo-cidade" class="my-5 pt-6 secao-campo-cidade" aria-label="Sobre o site">
+        <section id="campo-cidade" class="my-5 pt-6 secao-campo-cidade" aria-label="Sobre o site" role="region" aria-labelledby="campo-cidade-titulo">
             <div class="container bloco-secao">
                 <div class="secao-img-bloco">
                     <figure>
-                        <img src="img/2.png" class="rounded-pill img-origem-hover" alt="Imagem representativa" loading="lazy" data-origem="Pixabay – Representação">
+                        <img src="img/2.png" class="rounded-pill img-origem-hover" alt="Imagem representativa" loading="lazy" data-origem="Pixabay – Representação" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Representação</figcaption>
                     </figure>
                 </div>
                 <div class="secao-texto-bloco">
-                    <h2>Para que este site foi criado?</h2>
-                    <p>Este site foi criado para celebrar as igualdades e diferenças entre o campo e a cidade, mostrando como a agricultura e a cultura urbana se entrelaçam. Através de imagens, vídeos e informações, buscamos destacar a importância da conexão entre esses dois mundos, promovendo um diálogo enriquecedor e inspirador.</p>
+                    <h2 id="campo-cidade-titulo">Para que este site foi criado?</h2>
+                    <p>Este site foi criado para celebrar as igualdades e diferenças entre o campo e a cidade, mostrando como a agricultura e a cultura urbana se entrelaçam. Através de imagens, vídeos e informações, buscamos destacar a importância da conexão entre esses dois mundos, promovendo um diálogo enriquecedor e inspirador. <a href="#galeria">Veja nossa galeria</a>.</p>
                 </div>
             </div>
         </section>
 
         <!-- Seção Campo -->
-        <section id="campo" class="my-5" aria-label="Campo">
+        <section id="campo" class="my-5" aria-label="Campo" role="region" aria-labelledby="campo-titulo">
             <div class="container bloco-secao">
                 <div class="secao-img-bloco">
                     <figure>
-                        <img src="img/campo1.png" class="img-origem-hover" alt="Paisagem do campo" loading="lazy" data-origem="Pixabay – Campo">
+                        <img src="img/campo1.png" class="img-origem-hover" alt="Paisagem do campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
                     </figure>
                     <figure>
-                        <img src="img/campo2.png" class="img-origem-hover" alt="Trabalhador rural no campo" loading="lazy" data-origem="Pixabay – Campo">
+                        <img src="img/campo2.png" class="img-origem-hover" alt="Trabalhador rural no campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
                     </figure>
                 </div>
                 <div class="secao-texto-bloco">
-                    <h2 class="text-center">Campo</h2>
-                    <p class="text-center">Campo Forte: Orgulho, Desafios e Resistência</p>
-                    <p>O meio rural desempenha um papel essencial na produção de alimentos, na preservação ambiental e no equilíbrio socioeconômico do país. Apesar dos grandes desafios — especialmente a falta de infraestrutura, muitas vezes causada pela ausência de interesse público —, o campo tem se mantido resiliente por meio de soluções inovadoras e criativas. Devemos valorizar e nos orgulhar do trabalho realizado no campo. Atualmente, além dos problemas estruturais, os agricultores também enfrentam sérias dificuldades na produção devido às mudanças climáticas. É fundamental que a sociedade se mobilize para compreender essas dificuldades e lutar pelos direitos dos pequenos e grandes produtores, pois muitos dependem do campo para viver.</p> 
+                    <h2 class="text-center" id="campo-titulo">Campo</h2>
+                    <h3 class="text-center">Campo Forte: Orgulho, Desafios e Resistência</h3>
+                    <p>O meio rural desempenha um papel essencial na produção de alimentos, na preservação ambiental e no equilíbrio socioeconômico do país. Apesar dos grandes desafios — especialmente a falta de infraestrutura, muitas vezes causada pela ausência de interesse público —, o campo tem se mantido resiliente por meio de soluções inovadoras e criativas. Devemos valorizar e nos orgulhar do trabalho realizado no campo. Atualmente, além dos problemas estruturais, os agricultores também enfrentam sérias dificuldades na produção devido às mudanças climáticas. É fundamental que a sociedade se mobilize para compreender essas dificuldades e lutar pelos direitos dos pequenos e grandes produtores, pois muitos dependem do campo para viver. <a href="#cidade">Veja também sobre a cidade</a>.</p>
                 </div>
             </div>
         </section>
 
         <!-- Seção Cidade -->
-        <section id="cidade" class="my-5" aria-label="Cidade">
+        <section id="cidade" class="my-5" aria-label="Cidade" role="region" aria-labelledby="cidade-titulo">
             <div class="container bloco-secao">
                 <div class="secao-img-bloco">
                     <figure>
-                        <img src="img/cidade1.jpg" class="img-origem-hover" alt="Paisagem urbana" loading="lazy" data-origem="Pixabay – Cidade">
+                        <img src="img/cidade1.jpg" class="img-origem-hover" alt="Paisagem urbana" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
                     </figure>
                     <figure>
-                        <img src="img/cidade2.jpg" class="img-origem-hover" alt="Movimento na cidade" loading="lazy" data-origem="Pixabay – Cidade">
+                        <img src="img/cidade2.jpg" class="img-origem-hover" alt="Movimento na cidade" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
                     </figure>
                 </div>
                 <div class="secao-texto-bloco">
-                    <h2 class="text-center">Cidade</h2>
-                    <p class="text-center">A Vida na Cidade</p>
-                    <p>O espaço urbano é caracterizado pela alta concentração populacional, oferta de serviços e infraestrutura diversificada. A cidade exerce papel central no desenvolvimento econômico, cultural e tecnológico. Contudo, seu crescimento acelerado exige planejamento estratégico e integração com o meio rural. Na teoria, essa conexão ocorre de forma eficaz, mas, na prática, nem sempre é assim. Em muitos casos, não há acesso fácil e rápido do campo à cidade, devido à ausência de políticas públicas adequadas. É necessário reestabelecer tais políticas para promover uma melhor infraestrutura e fortalecer a conexão entre o campo e a cidade.</p>
+                    <h2 class="text-center" id="cidade-titulo">Cidade</h2>
+                    <h3 class="text-center">A Vida na Cidade</h3>
+                    <p>O espaço urbano é caracterizado pela alta concentração populacional, oferta de serviços e infraestrutura diversificada. A cidade exerce papel central no desenvolvimento econômico, cultural e tecnológico. Contudo, seu crescimento acelerado exige planejamento estratégico e integração com o meio rural. Na teoria, essa conexão ocorre de forma eficaz, mas, na prática, nem sempre é assim. Em muitos casos, não há acesso fácil e rápido do campo à cidade, devido à ausência de políticas públicas adequadas. É necessário reestabelecer tais políticas para promover uma melhor infraestrutura e fortalecer a conexão entre o campo e a cidade. <a href="#festejando">Veja como festejamos juntos</a>.</p>
                 </div>
             </div>
         </section>
 
         <!-- Seção Festejando -->
-        <section id="festejando" class="my-5" aria-label="Festejando">
+        <section id="festejando" class="my-5" aria-label="Festejando" role="region" aria-labelledby="festejando-titulo">
             <div class="container bloco-secao">
                 <div class="secao-img-bloco">
                     <figure>
-                        <img src="img/festa1.jpg" class="img-origem-hover" alt="Festa no campo" loading="lazy" data-origem="Pixabay – Campo">
+                        <img src="img/festa1.jpg" class="img-origem-hover" alt="Feira de produtos naturais no campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
                     </figure>
                     <figure>
-                        <img src="img/festa2.jpg" class="img-origem-hover" alt="Evento na cidade" loading="lazy" data-origem="Pixabay – Cidade">
+                        <img src="img/festa2.jpg" class="img-origem-hover" alt="feira na cidade" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
                         <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
                     </figure>
                 </div>
                 <div class="secao-texto-bloco">
-                    <h2 class="text-center">Festejando</h2>
+                    <h2 class="text-center" id="festejando-titulo">Festejando</h2>
+                    <h3 class="text-center">A Conexão Campo-Cidade: Superando Barreiras</h3>
                     <div class="text-center" style="max-width: 900px; margin: 0 auto;">
                         <p>
-                            <strong>A Conexão Campo-Cidade: Superando Barreirras</strong>
+                            <strong>A Conexão Campo-Cidade: Superando Barreiras</strong>
                         </p>
                         <p>Apesar dos desafios na conexão entre o campo e a cidade, a sociedade tem se mobilizado e promovido projetos que incentivam o desenvolvimento sustentável e valorizam os produtores rurais. Essas ações contribuem para a melhoria da qualidade de vida no meio rural, em parceria com o meio urbano. Diversas iniciativas têm surgido com o objetivo de aproximar esses dois espaços, fortalecendo seus laços e construindo um futuro mais justo e integrado.
-Entre esses processos destacam-se os de agrcultura familiar e feiras agroecologicas, que levam alimento de qualidade direto do campo para o consumidor urbano, promovendo um comercio mais justo e a alimentação saudavel.</p>
+Entre esses processos destacam-se os de agricultura familiar e feiras agroecológicas, que levam alimento de qualidade direto do campo para o consumidor urbano, promovendo um comércio mais justo e a alimentação saudável. <a href="#noticias">Veja notícias do dia a dia</a>.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Seção Notícias -->
-        <section id="noticias" class="my-5" aria-label="Notícias do Dia a Dia">
+        <section id="noticias" class="my-5" aria-label="Notícias do Dia a Dia" role="region" aria-labelledby="noticias-titulo">
             <div class="container">
-                <h2 class="text-center">Notícias do Dia a Dia</h2>
-                <p class="text-center">Fique por dentro das últimas notícias sobre o campo e a cidade. Explore os principais acontecimentos e tendências que conectam esses dois mundos.</p>
+                <h2 class="text-center" id="noticias-titulo">Notícias do Dia a Dia</h2>
+                <p class="text-center">Fique por dentro das últimas notícias sobre o campo e a cidade. Explore os principais acontecimentos e tendências que conectam esses dois mundos. <a href="#galeria">Veja imagens na galeria</a>.</p>
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <div class="noticia-card">
@@ -177,48 +192,49 @@ Entre esses processos destacam-se os de agrcultura familiar e feiras agroecologi
                 </div>
                 <!-- Vídeo informativo do YouTube -->
                 <div class="video-responsive video-max">
-                     <p class="text-center">Um pouco sobre como essa conexão pode ajudar na criação de produtos sustentáveis, através do vídeo do Sistema CNA/Senar.</p>
-                    <iframe src="https://www.youtube.com/embed/n8RcQM5MIr8" title="Agro e Arte: conexão entre o campo e a cidade | Canal Sistema CNA/Senar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/n8RcQM5MIr8" title="Agro e Arte: conexão entre o campo e a cidade | Canal Sistema CNA/Senar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen width="900" height="480"></iframe>
                 </div>
             </div>
         </section>
 
         <!-- Seção Galeria -->
-        <section id="galeria" aria-label="Galeria">
-            <h2 class="text-center">Galeria</h2>
-            <div class="carousel">
-                <img src="img/galeria1.jpg" alt="Imagem de um campo verde" class="img-origem-hover" data-origem="Pixabay – Campo">
-                <img src="img/galeria2.jpg" alt="Imagem de uma cidade moderna" class="img-origem-hover" data-origem="Pixabay – Cidade">
-                <img src="img/galeria3.jpg" alt="Imagem de uma fazenda tradicional" class="img-origem-hover" data-origem="Pixabay – Campo">
-                <img src="img/galeria4.jpg" alt="Imagem de um mercado urbano" class="img-origem-hover" data-origem="Pixabay – Cidade">
-                <img src="img/galeria6.jpg" alt="Imagem de um evento na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade">
-                <img src="img/galeria7.jpg" alt="Imagem de um pôr do sol no campo" class="img-origem-hover" data-origem="Pixabay – Campo">
-                <img src="img/galeria8.jpg" alt="Imagem de uma rua movimentada na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade">
+        <section id="galeria" aria-label="Galeria" role="region" aria-labelledby="galeria-titulo">
+            <h2 class="text-center" id="galeria-titulo">Galeria</h2>
+            <div class="carousel" role="region" aria-label="Carrossel de imagens do campo e da cidade" tabindex="0">
+                <img src="img/galeria1.webp" alt="Imagem de um campo verde" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria2.webp" alt="Imagem de uma cidade moderna" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria3.webp" alt="Imagem de uma fazenda tradicional" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria4.webp" alt="Imagem de um mercado urbano" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria6.webp" alt="Imagem de um evento na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria7.webp" alt="Imagem de um pôr do sol no campo" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
+                <img src="img/galeria8.webp" alt="Imagem de uma rua movimentada na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
+                <div class="sr-only" aria-live="polite" id="carousel-desc">Use as setas para navegar pelas imagens.</div>
             </div>
         </section>
 
         <!-- Seção Contato -->
-        <section id="contato" aria-label="Contato">
+        <section id="contato" aria-label="Contato" role="region" aria-labelledby="contato-titulo">
             <div class="container formulario-container">
                 <div class="formulario">
-                    <h2>Entre em contato</h2>
-                    <form action="https://formsubmit.co/naomigabrielecostaalves@gmail.com" method="POST" autocomplete="off">
+                    <h2 id="contato-titulo">Entre em contato</h2>
+                    <form action="https://formsubmit.co/naomigabrielecostaalves@gmail.com" method="POST" autocomplete="off" aria-label="Formulário de contato">
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required aria-required="true">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                            <input type="email" id="email" name="email" placeholder="Digite seu email" required aria-required="true">
                         </div>
                         <div class="form-group">
                             <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem" required></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem" required aria-required="true"></textarea>
                         </div>
                         <!-- Proteção contra spam (opcional, oculto) -->
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://agrinho-site-sucesso.vercel.app/obrigado.html">
                         <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                        <div id="form-feedback" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
@@ -226,9 +242,9 @@ Entre esses processos destacam-se os de agrcultura familiar e feiras agroecologi
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <p>&copy; 2025 Conexão Campo-Cidade.</p>
-              <p>Desenvolvido por <a href="https://github.com/naomialves/agrinho" target="_blank" rel="noopener noreferrer">Naomi</a></p>
+        <p>Desenvolvido por <a href="https://github.com/naomialves/agrinho" target="_blank" rel="noopener noreferrer">Naomi</a></p>
     </footer>
 
     <script src="script.js"></script>
