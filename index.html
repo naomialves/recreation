@@ -3,250 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conexão Campo-Cidade: Unindo o melhor do campo e da cidade para um futuro sustentável.">
-    <meta name="author" content="Naomi">
-    <meta name="keywords" content="campo, cidade, conexão, sustentabilidade, agricultura, cultura urbana, rural, agroecologia, feira, notícias, galeria, contato, Brasil, desenvolvimento sustentável, integração campo-cidade">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Conexão Campo-Cidade">
-    <meta property="og:description" content="Unindo o melhor do campo e da cidade para um futuro sustentável.">
-    <meta property="og:image" content="img/banner-rural.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://agrinho-site-sucesso.vercel.app/">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Conexão Campo-Cidade">
-    <meta name="twitter:description" content="Unindo o melhor do campo e da cidade para um futuro sustentável.">
-    <meta name="twitter:image" content="img/banner-rural.jpg">
-    <title>Conexão Campo-Cidade</title>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap" rel="stylesheet">
+    <title>Confissões Anônimas</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        /* Reset básico */
+        body, html {
+            margin:0; padding:0; box-sizing:border-box;
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #e9f5fe 0%, #f5f8fa 100%);
+            color: #222;
+        }
+        a { color: #1da1f2; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        main {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 8px 0 8px;
+        }
+        .sidebar, .profilebar {
+            width: 270px;
+            min-width: 180px;
+        }
+        .feed {
+            flex: 1 1 600px;
+            max-width: 650px;
+            min-width: 0;
+        }
+        .card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #0002;
+            margin-bottom: 28px;
+            padding: 0;
+            border: 1.5px solid #e6ecf0;
+            overflow: hidden;
+        }
+        .card .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px 0 22px;
+        }
+        .card .avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e3eaf2;
+            border: 2px solid #e6ecf0;
+        }
+        .card .username {
+            font-weight: bold;
+            color: #222;
+            font-size: 1.08em;
+            letter-spacing: 0.1px;
+        }
+        .card .post-meta {
+            font-size: 0.97em;
+            color: #7a8ca3;
+        }
+        .card .card-image {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            background: #f5f8fa;
+        }
+        .card .card-content {
+            padding: 16px 22px 0 22px;
+            font-size: 1.13em;
+            color: #222;
+            word-break: break-word;
+        }
+        .card .post-actions {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            padding: 12px 22px 18px 22px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 12px;
+        }
+        .like-btn, .btn-comentar, .btn-carregar-mais {
+            border: none;
+            background: none;
+            color: #1da1f2;
+            cursor: pointer;
+            font-size: 1.13em;
+            border-radius: 22px;
+            padding: 6px 16px;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .like-btn.curtido {
+            color: #e0245e;
+            font-weight: bold;
+            background: #fff0f3;
+        }
+        .like-btn:hover, .btn-comentar:hover, .btn-carregar-mais:hover {
+            background: #e8f5fd;
+            color: #156bbd;
+        }
+        .btn-carregar-mais {
+            display: block;
+            margin: 22px auto 0 auto;
+            background: #1da1f2;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.08em;
+            box-shadow: 0 1px 4px #0001;
+            border-radius: 24px;
+            padding: 10px 32px;
+        }
+        .btn-carregar-mais:hover {
+            background: #156bbd;
+            color: #fff;
+        }
+        .pergunta {
+            background: none;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            padding: 0;
+        }
+        .resposta {
+            display: none;
+            margin: 10px 0 0 0;
+            color: #444;
+            background: #f7fafd;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 1.04em;
+            border-left: 3px solid #1da1f2;
+            box-shadow: 0 1px 4px #0001;
+        }
+        .contador-perguntas {
+            font-size: 0.95em;
+            color: #8fa0b7;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        .feed-form {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #0002;
+            margin-bottom: 28px;
+            padding: 22px 28px 18px 28px;
+            border: 1.5px solid #e6ecf0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .feed-form textarea {
+            border-radius: 14px;
+            border: 1.5px solid #e6ecf0;
+            padding: 14px;
+            font-size: 1.12em;
+            background: #f8fbff;
+            resize: vertical;
+            min-height: 60px;
+            margin-bottom: 0;
+        }
+        .feed-form textarea:focus {
+            border: 1.5px solid #1da1f2;
+            outline: none;
+            background: #f0f4fa;
+        }
+        .feed-form .feed-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .feed-form .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #e3eaf2;
+            border: 2px solid #e6ecf0;
+            margin-right: 10px;
+        }
+        .feed-form .feedback {
+            margin-left: 0;
+        }
+        /* Stories estilo Instagram */
+        .stories-bar {
+            display: flex;
+            gap: 18px;
+            padding: 18px 0 18px 0;
+            overflow-x: auto;
+            margin-bottom: 18px;
+        }
+        .story {
+            width: 68px;
+            flex: 0 0 68px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .story .story-avatar {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            border: 3px solid #1da1f2;
+            object-fit: cover;
+            background: #e3eaf2;
+            margin-bottom: 6px;
+            transition: border 0.2s;
+        }
+        .story .story-avatar:hover {
+            border: 3px solid #e0245e;
+        }
+        .story .story-name {
+            font-size: 0.93em;
+            color: #444;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        /* Sidebar, profilebar e responsividade */
+        .sidebar { background: none; }
+        .sidebar nav { display: flex; flex-direction: column; gap: 12px; }
+        .sidebar nav a, .sidebar nav button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+            padding: 10px 16px;
+            border-radius: 24px;
+            border: none;
+            background: none;
+            color: #222;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .sidebar nav a:hover, .sidebar nav button:hover {
+            background: #e8f5fd;
+            color: #1da1f2;
+        }
+        .sidebar .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #1da1f2;
+            margin-bottom: 24px;
+        }
+        .login-section, .config-section, .chat-section {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+        }
+        .login-form input, .login-form button, #novo-amigo, #btn-add-amigo {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .login-form button, #btn-add-amigo {
+            background: #1da1f2;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-form button:hover, #btn-add-amigo:hover {
+            background: #1991da;
+        }
+        .feedback { color: #e0245e; font-weight: bold; }
+        .loader { display: flex; align-items: center; gap: 8px; }
+        .spinner {
+            display: inline-block;
+            width: 16px; height: 16px;
+            border: 2px solid #ccc;
+            border-top: 2px solid #1da1f2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @media (max-width: 900px) {
+            main { flex-direction: column; gap: 0; }
+            .sidebar, .profilebar { width: 100%; min-width: 0; }
+            .feed { max-width: 100%; }
+            .sidebar { margin-bottom: 18px; }
+        }
+        @media (max-width: 700px) {
+            main { padding: 0; }
+            .card, .perfil, .login-section, .config-section, .chat-section, .feed-form { border-radius: 0; box-shadow: none; padding: 10px 2vw; }
+            .sidebar, .profilebar { display: none; }
+            .feed { padding: 0; }
+            .stories-bar { padding: 10px 0 10px 0; gap: 10px; }
+        }
+        @media (max-width: 500px) {
+            .card, .perfil, .login-section, .config-section, .chat-section, .feed-form { padding: 6px 1vw; }
+            .feed-form textarea { padding: 8px; font-size: 1em; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip link para acessibilidade -->
-    <a href="#inicio" class="skip-link" tabindex="0">Pular para o conteúdo principal</a>
-    <!-- Header -->
-    <header>
+    <div class="sidebar">
+        <div class="logo" style="font-family:'Segoe UI',cursive;font-size:2.3em;letter-spacing:2px;">ConfAnon</div>
         <nav aria-label="Menu principal">
-            <button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-list" class="menu-hamburguer">
-                <span class="hamburguer-bar"></span>
-                <span class="hamburguer-bar"></span>
-                <span class="hamburguer-bar"></span>
-            </button>
-            <ul class="nav" id="menu-list">
-                <li><a href="#inicio" aria-current="page">Início</a></li>
-                <li><a href="#campo">Campo</a></li>
-                <li><a href="#cidade">Cidade</a></li>
-                <li><a href="#festejando">Festejando</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+            <a href="#area-login" onclick="fecharMenu()"><span aria-hidden="true">👤</span> Perfil</a>
+            <a href="#form-pergunta" onclick="fecharMenu()"><span aria-hidden="true">✍️</span> Perguntar</a>
+            <a href="#perguntas" onclick="fecharMenu()"><span aria-hidden="true">📰</span> Feed</a>
+            <a href="#chats" onclick="fecharMenu()"><span aria-hidden="true">💬</span> Bate-papo</a>
+            <a href="#configuracoes" onclick="fecharMenu()"><span aria-hidden="true">⚙️</span> Configurações</a>
         </nav>
-    </header>
-
-    <!-- Botões de Acessibilidade e Tema -->
-    <div id="acessibilidade" aria-label="Acessibilidade">
-        <button id="aumentar-fonte" aria-label="Aumentar fonte">A +</button>
-        <button id="diminuir-fonte" aria-label="Diminuir fonte">A -</button>
-        <button class="toggle-mode" aria-label="Alternar tema">🌙</button>
-        <button id="alto-contraste" aria-label="Ativar alto contraste">🌓</button>
     </div>
-
-    <!-- Banner -->
-    <section id="banner" aria-label="Banner principal">
-        <img src="img/banner-rural.jpg" alt="Banner rural" class="banner-img" style="display:none;" width="1920" height="700" decoding="async">
-        <div class="banner-overlay">
-            <h1>Conexão Campo-Cidade</h1>
-            <p>Unindo o melhor do campo e da cidade para um futuro sustentável.</p>
-            <div class="banner-buttons">
-                <a href="#campo" class="btn btn-primary">Campo</a>
-                <a href="#cidade" class="btn btn-primary">Cidade</a>
-                <a href="#galeria" class="btn btn-primary">Galeria</a>
-                <a href="#contato" class="btn btn-primary">Contato</a>
+    <main>
+        <div class="feed">
+            <!-- Stories estilo Instagram -->
+            <div class="stories-bar" id="stories-bar">
+                <!-- Stories renderizados via JS -->
             </div>
+            <!-- Formulário de postagem estilo Twitter/Instagram -->
+            <section aria-label="Envio de pergunta ou confissão" class="feed-form">
+                <form id="form-pergunta" style="display:flex;align-items:flex-start;gap:12px;">
+                    <img id="user-avatar" class="avatar" src="" alt="Seu avatar" style="display:none;">
+                    <div style="flex:1;">
+                        <textarea id="pergunta" name="pergunta" placeholder="Compartilhe uma confissão ou pergunta..." required></textarea>
+                        <div class="feed-actions">
+                            <button type="submit" aria-label="Enviar pergunta ou confissão">
+                                <span aria-hidden="true">✉️</span> Publicar
+                            </button>
+                            <span id="feedback" class="feedback" aria-live="polite"></span>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <section aria-label="Perguntas recentes" class="card" style="padding:0;">
+                <h2 style="font-size:1.2em;margin:22px 0 0 22px;">Feed <span id="contador-perguntas" class="contador-perguntas"></span></h2>
+                <div id="perguntas" style="padding:0 0 18px 0;">
+                    <p class="nenhuma-pergunta">Carregando perguntas do banco de dados...</p>
+                </div>
+            </section>
         </div>
-    </section>
-
-    <!-- Main Content -->
-    <main id="main-content" tabindex="-1">
-        <!-- Seção Início -->
-        <section id="inicio" aria-label="Início" role="region" aria-labelledby="inicio-titulo">
-            <div class="container text-center">
-                <h2 id="inicio-titulo">Bem-vindo à Conexão Campo-Cidade</h2>
-                <p>Explore a harmonia entre o campo e a cidade.</p>
-                <a href="#campo" class="btn btn-primary">Saiba Mais</a>
-            </div>
-        </section>
-
-        <!-- Seção Campo-Cidade -->
-        <section id="campo-cidade" class="my-5 pt-6 secao-campo-cidade" aria-label="Sobre o site" role="region" aria-labelledby="campo-cidade-titulo">
-            <div class="container bloco-secao">
-                <div class="secao-img-bloco">
-                    <figure>
-                        <img src="img/2.png" class="rounded-pill img-origem-hover" alt="Imagem representativa" loading="lazy" data-origem="Pixabay – Representação" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Representação</figcaption>
-                    </figure>
-                </div>
-                <div class="secao-texto-bloco">
-                    <h2 id="campo-cidade-titulo">Para que este site foi criado?</h2>
-                    <p>Este site foi criado para celebrar as igualdades e diferenças entre o campo e a cidade, mostrando como a agricultura e a cultura urbana se entrelaçam. Através de imagens, vídeos e informações, buscamos destacar a importância da conexão entre esses dois mundos, promovendo um diálogo enriquecedor e inspirador. <a href="#galeria">Veja nossa galeria</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Campo -->
-        <section id="campo" class="my-5" aria-label="Campo" role="region" aria-labelledby="campo-titulo">
-            <div class="container bloco-secao">
-                <div class="secao-img-bloco">
-                    <figure>
-                        <img src="img/campo1.png" class="img-origem-hover" alt="Paisagem do campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/campo2.png" class="img-origem-hover" alt="Trabalhador rural no campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
-                    </figure>
-                </div>
-                <div class="secao-texto-bloco">
-                    <h2 class="text-center" id="campo-titulo">Campo</h2>
-                    <h3 class="text-center">Campo Forte: Orgulho, Desafios e Resistência</h3>
-                    <p>O meio rural desempenha um papel essencial na produção de alimentos, na preservação ambiental e no equilíbrio socioeconômico do país. Apesar dos grandes desafios — especialmente a falta de infraestrutura, muitas vezes causada pela ausência de interesse público —, o campo tem se mantido resiliente por meio de soluções inovadoras e criativas. Devemos valorizar e nos orgulhar do trabalho realizado no campo. Atualmente, além dos problemas estruturais, os agricultores também enfrentam sérias dificuldades na produção devido às mudanças climáticas. É fundamental que a sociedade se mobilize para compreender essas dificuldades e lutar pelos direitos dos pequenos e grandes produtores, pois muitos dependem do campo para viver. <a href="#cidade">Veja também sobre a cidade</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Cidade -->
-        <section id="cidade" class="my-5" aria-label="Cidade" role="region" aria-labelledby="cidade-titulo">
-            <div class="container bloco-secao">
-                <div class="secao-img-bloco">
-                    <figure>
-                        <img src="img/cidade1.jpg" class="img-origem-hover" alt="Paisagem urbana" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/cidade2.jpg" class="img-origem-hover" alt="Movimento na cidade" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
-                    </figure>
-                </div>
-                <div class="secao-texto-bloco">
-                    <h2 class="text-center" id="cidade-titulo">Cidade</h2>
-                    <h3 class="text-center">A Vida na Cidade</h3>
-                    <p>O espaço urbano é caracterizado pela alta concentração populacional, oferta de serviços e infraestrutura diversificada. A cidade exerce papel central no desenvolvimento econômico, cultural e tecnológico. Contudo, seu crescimento acelerado exige planejamento estratégico e integração com o meio rural. Na teoria, essa conexão ocorre de forma eficaz, mas, na prática, nem sempre é assim. Em muitos casos, não há acesso fácil e rápido do campo à cidade, devido à ausência de políticas públicas adequadas. É necessário reestabelecer tais políticas para promover uma melhor infraestrutura e fortalecer a conexão entre o campo e a cidade. <a href="#festejando">Veja como festejamos juntos</a>.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Festejando -->
-        <section id="festejando" class="my-5" aria-label="Festejando" role="region" aria-labelledby="festejando-titulo">
-            <div class="container bloco-secao">
-                <div class="secao-img-bloco">
-                    <figure>
-                        <img src="img/festa1.jpg" class="img-origem-hover" alt="Feira de produtos naturais no campo" loading="lazy" data-origem="Pixabay – Campo" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Campo</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/festa2.jpg" class="img-origem-hover" alt="feira na cidade" loading="lazy" data-origem="Pixabay – Cidade" width="280" height="180" decoding="async">
-                        <figcaption class="img-caption">Fonte: Pixabay – Cidade</figcaption>
-                    </figure>
-                </div>
-                <div class="secao-texto-bloco">
-                    <h2 class="text-center" id="festejando-titulo">Festejando</h2>
-                    <h3 class="text-center">A Conexão Campo-Cidade: Superando Barreiras</h3>
-                    <div class="text-center" style="max-width: 900px; margin: 0 auto;">
-                        <p>
-                            <strong>A Conexão Campo-Cidade: Superando Barreiras</strong>
-                        </p>
-                        <p>Apesar dos desafios na conexão entre o campo e a cidade, a sociedade tem se mobilizado e promovido projetos que incentivam o desenvolvimento sustentável e valorizam os produtores rurais. Essas ações contribuem para a melhoria da qualidade de vida no meio rural, em parceria com o meio urbano. Diversas iniciativas têm surgido com o objetivo de aproximar esses dois espaços, fortalecendo seus laços e construindo um futuro mais justo e integrado.
-Entre esses processos destacam-se os de agricultura familiar e feiras agroecológicas, que levam alimento de qualidade direto do campo para o consumidor urbano, promovendo um comércio mais justo e a alimentação saudável. <a href="#noticias">Veja notícias do dia a dia</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Notícias -->
-        <section id="noticias" class="my-5" aria-label="Notícias do Dia a Dia" role="region" aria-labelledby="noticias-titulo">
-            <div class="container">
-                <h2 class="text-center" id="noticias-titulo">Notícias do Dia a Dia</h2>
-                <p class="text-center">Fique por dentro das últimas notícias sobre o campo e a cidade. Explore os principais acontecimentos e tendências que conectam esses dois mundos. <a href="#galeria">Veja imagens na galeria</a>.</p>
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        <div class="noticia-card">
-                            <h3>Notícias do Campo</h3>
-                            <ul>
-                                <li><a href="https://www.noticiasagricolas.com.br/" target="_blank" rel="noopener noreferrer">Notícias Agrícolas</a></li>
-                                <li><a href="https://www.agrolink.com.br/" target="_blank" rel="noopener noreferrer">Agrolink</a></li>
-                                <li><a href="https://www.canalrural.com.br/" target="_blank" rel="noopener noreferrer">Canal Rural</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="noticia-card">
-                            <h3>Notícias da Cidade</h3>
-                            <ul>
-                                <li><a href="https://g1.globo.com/" target="_blank" rel="noopener noreferrer">G1</a></li>
-                                <li><a href="https://www.uol.com.br/" target="_blank" rel="noopener noreferrer">UOL Notícias</a></li>
-                                <li><a href="https://www.estadao.com.br/" target="_blank" rel="noopener noreferrer">Estadão</a></li>
-                            </ul>
-                        </div>
-                  </div>
-                </div>
-                <!-- Vídeo informativo do YouTube -->
-                <div class="video-responsive video-max">
-                    <iframe src="https://www.youtube.com/embed/n8RcQM5MIr8" title="Agro e Arte: conexão entre o campo e a cidade | Canal Sistema CNA/Senar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen width="900" height="480"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Galeria -->
-        <section id="galeria" aria-label="Galeria" role="region" aria-labelledby="galeria-titulo">
-            <h2 class="text-center" id="galeria-titulo">Galeria</h2>
-            <div class="carousel" role="region" aria-label="Carrossel de imagens do campo e da cidade" tabindex="0">
-                <img src="img/galeria1.webp" alt="Imagem de um campo verde" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria2.webp" alt="Imagem de uma cidade moderna" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria3.webp" alt="Imagem de uma fazenda tradicional" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria4.webp" alt="Imagem de um mercado urbano" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria6.webp" alt="Imagem de um evento na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria7.webp" alt="Imagem de um pôr do sol no campo" class="img-origem-hover" data-origem="Pixabay – Campo" loading="lazy" width="320" height="210" decoding="async">
-                <img src="img/galeria8.webp" alt="Imagem de uma rua movimentada na cidade" class="img-origem-hover" data-origem="Pixabay – Cidade" loading="lazy" width="320" height="210" decoding="async">
-                <div class="sr-only" aria-live="polite" id="carousel-desc">Use as setas para navegar pelas imagens.</div>
-            </div>
-        </section>
-
-        <!-- Seção Contato -->
-        <section id="contato" aria-label="Contato" role="region" aria-labelledby="contato-titulo">
-            <div class="container formulario-container">
-                <div class="formulario">
-                    <h2 id="contato-titulo">Entre em contato</h2>
-                    <form action="https://formsubmit.co/naomigabrielecostaalves@gmail.com" method="POST" autocomplete="off" aria-label="Formulário de contato">
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Digite seu email" required aria-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem" required aria-required="true"></textarea>
-                        </div>
-                        <!-- Proteção contra spam (opcional, oculto) -->
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://agrinho-site-sucesso.vercel.app/obrigado.html">
-                        <button type="submit" class="btn btn-primary">Enviar mensagem</button>
-                        <div id="form-feedback" aria-live="polite"></div>
+        <div class="profilebar">
+            <section id="area-login" aria-label="Login ou Perfil" style="display:none;">
+                <!-- Conteúdo será renderizado via JS -->
+            </section>
+            <section id="login-section" class="login-section" aria-label="Login">
+                <form id="login-form" class="login-form">
+                    <h2>Entrar</h2>
+                    <label for="login-usuario">Usuário:</label>
+                    <input type="text" id="login-usuario" name="usuario" required maxlength="20" autocomplete="username">
+                    <label for="login-senha">Senha:</label>
+                    <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
+                    <button type="submit">Entrar</button>
+                    <button type="button" id="btn-criar-conta">Criar Conta</button>
+                    <span id="login-feedback" class="feedback" aria-live="polite"></span>
+                </form>
+                <form id="criar-conta-form" class="login-form" style="display:none;">
+                    <h2>Criar Conta</h2>
+                    <label for="criar-gmail">Gmail:</label>
+                    <input type="email" id="criar-gmail" name="gmail" required autocomplete="email" pattern=".+@gmail\.com">
+                    <label for="criar-usuario">Nome de usuário:</label>
+                    <input type="text" id="criar-usuario" name="usuario" required maxlength="20" autocomplete="username">
+                    <label for="criar-senha">Senha:</label>
+                    <input type="password" id="criar-senha" name="senha" required autocomplete="new-password">
+                    <label for="criar-foto">Foto de perfil:</label>
+                    <input type="file" id="criar-foto" name="foto" accept="image/*">
+                    <div id="preview-foto" style="margin:10px 0;"></div>
+                    <button type="submit">Criar Conta</button>
+                    <button type="button" id="btn-voltar-login">Voltar</button>
+                    <span id="criar-feedback" class="feedback" aria-live="polite"></span>
+                </form>
+            </section>
+            <section id="chats" class="chat-section" aria-label="Salas de Bate-papo" style="display:none;">
+                <h2>Salas de Bate-papo Privadas</h2>
+                <div id="chat-lista"></div>
+                <div id="chat-area" style="display:none;">
+                    <h3 id="chat-titulo"></h3>
+                    <div id="chat-mensagens" class="chat-mensagens"></div>
+                    <form id="chat-form">
+                        <input type="text" id="chat-msg" placeholder="Digite sua mensagem..." autocomplete="off" required>
+                        <button type="submit">Enviar</button>
                     </form>
+                    <button id="chat-voltar" type="button">Voltar</button>
                 </div>
-            </div>
-        </section>
+            </section>
+            <section id="configuracoes" class="config-section" aria-label="Configurações" style="display:none;">
+                <h2>Configurações</h2>
+                <div>
+                    <label for="tema-select"><strong>Tema:</strong></label>
+                    <select id="tema-select">
+                        <option value="claro">Claro</option>
+                        <option value="escuro">Escuro</option>
+                    </select>
+                </div>
+                <div style="margin-top:18px;">
+                    <h3>Configurações de Usuário</h3>
+                    <button id="btn-editar-perfil" type="button">Editar Perfil</button>
+                </div>
+            </section>
+        </div>
     </main>
+    <script>
+        // Variáveis globais
+        const form = document.getElementById('form-pergunta');
+        const perguntasDiv = document.getElementById('perguntas');
+        const feedback = document.getElementById('feedback');
+        const textarea = document.getElementById('pergunta');
+        const contadorPerguntas = document.getElementById('contador-perguntas');
+        const areaLogin = document.getElementById('area-login');
+        const loginSection = document.getElementById('login-section');
+        const loginForm = document.getElementById('login-form');
+        const loginFeedback = document.getElementById('login-feedback');
+        const btnCriarConta = document.getElementById('btn-criar-conta');
+        const criarContaForm = document.getElementById('criar-conta-form');
+        const criarFeedback = document.getElementById('criar-feedback');
+        const btnVoltarLogin = document.getElementById('btn-voltar-login');
+        const criarFotoInput = document.getElementById('criar-foto');
+        const previewFoto = document.getElementById('preview-foto');
 
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <p>&copy; 2025 Conexão Campo-Cidade.</p>
-        <p>Desenvolvido por <a href="https://github.com/naomialves/agrinho" target="_blank" rel="noopener noreferrer">Naomi</a></p>
-    </footer>
+        let usuarioAtual = null;
+        let perguntas = [];
+        let fotoBase64 = "";
 
-    <script src="script.js"></script>
+        // Preview da foto de perfil
+        criarFotoInput.onchange = function(e) {
+            const file = criarFotoInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    fotoBase64 = evt.target.result;
+                    previewFoto.innerHTML = `<img src="${fotoBase64}" alt="Foto de perfil" style="max-width:80px;max-height:80px;border-radius:50%;">`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                fotoBase64 = "";
+                previewFoto.innerHTML = "";
+            }
+        };
+
+        // Alterna entre login e criar conta
+        btnCriarConta.onclick = function() {
+            loginForm.style.display = "none";
+            criarContaForm.style.display = "";
+            criarFeedback.textContent = "";
+            previewFoto.innerHTML = "";
+            fotoBase64 = "";
+        };
+        btnVoltarLogin.onclick = function() {
+            criarContaForm.reset();
+            criarContaForm.style.display = "none";
+            loginForm.style.display = "";
+            criarFeedback.textContent = "";
+            previewFoto.innerHTML = "";
+            fotoBase64 = "";
+        };
+
+        // Função utilitária para escapar HTML (evita XSS)
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Loader utilitário
+        function showLoader(target, msg = "Carregando...") {
+            target.innerHTML = `<div class="loader" aria-live="polite">${msg} <span class="spinner"></span></div>`;
+        }
+
+        // --- INTEGRAÇÃO COM BACKEND (AJAX) ---
+
+        // Carrega perguntas do banco de dados (API)
+        async function carregarPerguntas() {
+            showLoader(perguntasDiv, "Carregando perguntas do banco de dados...");
+            try {
+                const resp = await fetch('/api/perguntas');
+                if (!resp.ok) throw new Error('Erro ao carregar perguntas');
+                perguntas = await resp.json();
+            } catch (e) {
+                perguntas = [];
+                perguntasDiv.innerHTML = '<p class="nenhuma-pergunta">Erro ao carregar perguntas.</p>';
+            }
+            renderPerguntas();
+        }
+
+        // Envia nova pergunta para o banco de dados (API)
+        async function enviarPergunta(texto) {
+            try {
+                const resp = await fetch('/api/perguntas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ texto, usuario: usuarioAtual.usuario }) // Corrigido para .usuario
+                });
+                if (!resp.ok) throw new Error('Erro ao enviar pergunta');
+                const novaPergunta = await resp.json();
+                perguntas.unshift(novaPergunta);
+                renderPerguntas();
+                feedback.textContent = "Pergunta enviada com sucesso!";
+                setTimeout(() => feedback.textContent = "", 2000);
+            } catch (e) {
+                feedback.textContent = "Erro ao enviar pergunta.";
+                setTimeout(() => feedback.textContent = "", 2000);
+            }
+        }
+
+        // Curte pergunta (API)
+        async function curtirPerguntaAPI(id) {
+            try {
+                const resp = await fetch(`/api/perguntas/${id}/like`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario: usuarioAtual.usuario }) // Corrigido para .usuario
+                });
+                if (!resp.ok) throw new Error('Erro ao curtir');
+                const perguntaAtualizada = await resp.json();
+                perguntas = perguntas.map(p => p._id === id ? perguntaAtualizada : p);
+                renderPerguntas();
+            } catch (e) {
+                alert('Erro ao curtir pergunta.');
+            }
+        }
+
+        // --- LOGIN/LOGOUT/CRIAR CONTA (API) ---
+
+        // Recupera usuário salvo ao carregar a página
+        if (!usuarioAtual) {
+            try {
+                const salvo = localStorage.getItem('usuarioAtual');
+                if (salvo) usuarioAtual = JSON.parse(salvo);
+            } catch {}
+        }
+
+        // Função utilitária para renderizar lista de amigos
+        function renderizarAmigos(amigos) {
+            if (!amigos || amigos.length === 0) return '<li>Nenhum amigo adicionado.</li>';
+            return amigos.map(a => `<li>${a}</li>`).join('');
+        }
+
+        // Adiciona modal de edição de perfil
+        const modalPerfil = document.createElement('div');
+        modalPerfil.id = "modal-editar-perfil";
+        modalPerfil.style = "display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;z-index:999;align-items:center;justify-content:center;";
+        modalPerfil.innerHTML = `
+          <div style="background:#fff;padding:32px 24px 18px 24px;border-radius:18px;max-width:350px;width:90vw;position:relative;">
+            <button id="fechar-modal-perfil" style="position:absolute;top:10px;right:12px;background:none;border:none;font-size:1.5em;cursor:pointer;">&times;</button>
+            <h2 style="margin-top:0;font-size:1.2em;">Editar Perfil</h2>
+            <form id="form-editar-perfil">
+              <label for="editar-nome">Nome:</label>
+              <input type="text" id="editar-nome" maxlength="30" style="width:100%;margin-bottom:10px;">
+              <label for="editar-foto">Foto de perfil:</label>
+              <input type="file" id="editar-foto" accept="image/*" style="margin-bottom:10px;">
+              <div id="editar-preview-foto" style="margin-bottom:10px;"></div>
+              <label for="editar-bio">Bio:</label>
+              <textarea id="editar-bio" maxlength="120" style="width:100%;min-height:44px;margin-bottom:10px;"></textarea>
+              <button type="submit" style="width:100%;margin-top:8px;">Salvar</button>
+              <span id="editar-perfil-feedback" class="feedback" aria-live="polite"></span>
+            </form>
+          </div>
+        `;
+        document.body.appendChild(modalPerfil);
+
+        // Função para abrir modal de edição de perfil
+        function abrirModalPerfil() {
+            if (!usuarioAtual) return;
+            document.getElementById('editar-nome').value = usuarioAtual.nome || usuarioAtual.usuario || '';
+            document.getElementById('editar-bio').value = usuarioAtual.bio || '';
+            document.getElementById('editar-preview-foto').innerHTML = usuarioAtual.foto ? `<img src="${usuarioAtual.foto}" alt="Foto" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">` : '';
+            document.getElementById('editar-perfil-feedback').textContent = '';
+            modalPerfil.style.display = "flex";
+        }
+        document.addEventListener('click', function(e) {
+            if (e.target.id === "fechar-modal-perfil") modalPerfil.style.display = "none";
+            if (e.target === modalPerfil) modalPerfil.style.display = "none";
+        });
+
+        // Preview da nova foto no modal
+        let editarFotoBase64 = "";
+        document.getElementById('editar-foto').onchange = function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    editarFotoBase64 = evt.target.result;
+                    document.getElementById('editar-preview-foto').innerHTML = `<img src="${editarFotoBase64}" alt="Foto" style="width:80px;height:80px;border-radius:50%;object-fit:cover;">`;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                editarFotoBase64 = "";
+                document.getElementById('editar-preview-foto').innerHTML = "";
+            }
+        };
+
+        // Salvar edição de perfil
+        document.getElementById('form-editar-perfil').onsubmit = async function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('editar-nome').value.trim();
+            const bio = document.getElementById('editar-bio').value.trim();
+            const foto = editarFotoBase64 || usuarioAtual.foto || "";
+            document.getElementById('editar-perfil-feedback').textContent = "Salvando...";
+            try {
+                const resp = await fetch('/api/usuarios/editar-perfil', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        usuario: usuarioAtual.usuario,
+                        nome,
+                        bio,
+                        foto
+                    })
+                });
+                if (!resp.ok) throw new Error('Erro ao salvar perfil');
+                const atualizado = await resp.json();
+                usuarioAtual.nome = atualizado.nome;
+                usuarioAtual.bio = atualizado.bio;
+                usuarioAtual.foto = atualizado.foto;
+                localStorage.setItem('usuarioAtual', JSON.stringify(usuarioAtual));
+                renderLogin();
+                atualizarAvatarForm();
+                renderStories();
+                document.getElementById('editar-perfil-feedback').textContent = "Perfil atualizado!";
+                setTimeout(() => { modalPerfil.style.display = "none"; }, 1000);
+            } catch (err) {
+                document.getElementById('editar-perfil-feedback').textContent = err.message || "Erro ao salvar perfil";
+            }
+        };
+
+        // Renderiza área de perfil (usuário logado)
+        function renderLogin() {
+            if (!usuarioAtual) return;
+            const nome = escapeHTML(usuarioAtual.nome || usuarioAtual.usuario || '');
+            const gmail = escapeHTML(usuarioAtual.gmail || '');
+            const foto = usuarioAtual.foto || '';
+            const bio = escapeHTML(usuarioAtual.bio || '');
+            areaLogin.innerHTML = `
+                <div class="perfil">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="${foto}" alt="Foto de perfil" style="width:60px;height:60px;border-radius:50%;object-fit:cover;background:#eee;">
+                        <div>
+                            <strong>${nome}</strong><br>
+                            <span style="font-size:0.95em;color:#888;">${gmail}</span>
+                            ${bio ? `<div style="font-size:0.97em;color:#444;margin-top:4px;">${bio}</div>` : ''}
+                        </div>
+                    </div>
+                    <button id="logout" type="button" style="margin:14px 0 0 0;" aria-label="Sair da conta">Sair</button>
+                    <button id="btn-editar-perfil" type="button" aria-label="Editar perfil">Editar Perfil</button>
+                    <div class="amigos">
+                        <h3>Amigos</h3>
+                        <ul id="lista-amigos">
+                            ${(usuarioAtual.amigos || []).map(a => `<li>${escapeHTML(a)} <button type="button" class="btn-remover-amigo" data-amigo="${escapeHTML(a)}" aria-label="Remover amigo ${escapeHTML(a)}">Remover</button></li>`).join('') || '<li>Nenhum amigo adicionado.</li>'}
+                        </ul>
+                        <input type="text" id="novo-amigo" placeholder="Adicionar amigo pelo nome" maxlength="20" aria-label="Nome do novo amigo">
+                        <button id="btn-add-amigo" type="button" aria-label="Adicionar amigo">Adicionar</button>
+                        <span id="amigo-feedback" class="feedback" aria-live="polite"></span>
+                    </div>
+                </div>
+            `;
+            // Remover amigo
+            document.querySelectorAll('.btn-remover-amigo').forEach(btn => {
+                btn.onclick = async function() {
+                    const amigo = this.getAttribute('data-amigo');
+                    // Chamar backend para remover amigo
+                    try {
+                        const resp = await fetch('/api/usuarios/remover-amigo', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ usuario: usuarioAtual.usuario, amigo })
+                        });
+                        if (!resp.ok) throw new Error();
+                        usuarioAtual.amigos = usuarioAtual.amigos.filter(a => a !== amigo);
+                        localStorage.setItem('usuarioAtual', JSON.stringify(usuarioAtual));
+                        renderLogin();
+                    } catch {
+                        document.getElementById('amigo-feedback').textContent = "Erro ao remover amigo.";
+                    }
+                };
+            });
+            // Adicionar amigo
+            document.getElementById('btn-add-amigo').onclick = async function() {
+                const novoAmigo = document.getElementById('novo-amigo').value.trim();
+                if (!novoAmigo) return;
+                // Chamar backend para adicionar amigo
+                try {
+                    const resp = await fetch('/api/usuarios/adicionar-amigo', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ usuario: usuarioAtual.usuario, amigo: novoAmigo })
+                    });
+                    if (!resp.ok) throw new Error();
+                    usuarioAtual.amigos = usuarioAtual.amigos || [];
+                    if (!usuarioAtual.amigos.includes(novoAmigo)) usuarioAtual.amigos.push(novoAmigo);
+                    localStorage.setItem('usuarioAtual', JSON.stringify(usuarioAtual));
+                    renderLogin();
+                } catch {
+                    document.getElementById('amigo-feedback').textContent = "Erro ao adicionar amigo.";
+                }
+            };
+            // Editar perfil (exemplo: abrir modal, aqui só feedback)
+            document.getElementById('btn-editar-perfil').onclick = function() {
+                abrirModalPerfil();
+            };
+            // Logout com confirmação
+            document.getElementById('logout').onclick = function() {
+                if (confirm("Tem certeza que deseja sair?")) {
+                    usuarioAtual = null;
+                    localStorage.removeItem('usuarioAtual');
+                    areaLogin.style.display = 'none';
+                    loginSection.style.display = '';
+                    perguntasDiv.innerHTML = '<p class="nenhuma-pergunta">Faça login para ver e enviar perguntas.</p>';
+                    setTimeout(() => {
+                        const inputUsuario = document.getElementById('login-usuario');
+                        if (inputUsuario) inputUsuario.focus();
+                    }, 100);
+                }
+            };
+            carregarChats();
+        }
+
+        // Login
+        loginForm.onsubmit = async function(e) {
+            e.preventDefault();
+            loginFeedback.textContent = '';
+            const usuario = document.getElementById('login-usuario').value.trim();
+            const senha = document.getElementById('login-senha').value;
+            if (!usuario || !senha) return;
+            try {
+                const resp = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario, senha })
+                });
+                if (!resp.ok) throw new Error('Usuário ou senha inválidos');
+                usuarioAtual = await resp.json();
+                if (!usuarioAtual.usuario) usuarioAtual.usuario = usuario;
+                localStorage.setItem('usuarioAtual', JSON.stringify(usuarioAtual));
+                loginForm.reset();
+                loginSection.style.display = 'none';
+                areaLogin.style.display = '';
+                // Mostra todas as seções principais após login
+                document.querySelectorAll('.profilebar section, .feed, .sidebar').forEach(el => el.style.display = '');
+                renderLogin();
+                carregarPerguntas();
+                carregarChats();
+                mostrarSecao('area-login');
+            } catch (err) {
+                loginFeedback.textContent = err.message || 'Erro ao fazer login';
+            }
+        };
+
+        // --- LOGIN COM GOOGLE (OAuth 2.0) ---
+        // Adiciona botão Google e opções de permissões
+        loginForm.insertAdjacentHTML('beforeend', `
+            <button type="button" id="btn-google-login" style="background:#fff;color:#222;border:1px solid #ddd;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width:20px;height:20px;"> Entrar com Google
+            </button>
+        `);
+
+        // LOGIN COM GOOGLE - AVISO DE SEGURANÇA E AJUSTE DE REDIRECT_URI
+        window.loginComGoogle = async function() {
+            alert(
+                "O login com Google só funcionará corretamente se o app estiver publicado em um domínio HTTPS e autorizado no Google Cloud Console.\n\n" +
+                "O uso de redirect_uri=file:/// não é permitido pelo Google OAuth 2.0 por motivos de segurança.\n\n" +
+                "Para testar OAuth localmente, use um servidor local (ex: http://localhost:3000/) e configure esse endereço como URI de redirecionamento no Google Cloud Console.\n\n" +
+                "Em produção, utilize sempre um domínio HTTPS válido."
+            );
+            // Exemplo de configuração correta:
+            // const redirect_uri = "http://localhost:3000/" ou "https://seudominio.com/"
+            // O Google NÃO permite redirect_uri=file:///
+            // Para testar, rode um servidor local e ajuste o client_id e redirect_uri no código.
+        };
+
+        // Solicita permissão e faz login com Google usando OAuth 2.0 popup
+        window.loginComGoogle = async function() {
+            // Parâmetros do OAuth (ajuste o client_id para o seu projeto)
+            const client_id = 'SEU_CLIENT_ID_GOOGLE.apps.googleusercontent.com'; // Troque pelo seu client_id
+            const redirect_uri = window.location.origin + '/';
+            const scope = 'profile email';
+            const state = Math.random().toString(36).substring(2);
+            const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${client_id}&redirect_uri=${encodeURIComponent(redirect_uri)}&response_type=token&scope=${encodeURIComponent(scope)}&state=${state}&prompt=select_account`;
+            // Abre popup
+            const w = 500, h = 600;
+            const left = (screen.width/2)-(w/2), top = (screen.height/2)-(h/2);
+            const popup = window.open(url, 'LoginGoogle', `width=${w},height=${h},top=${top},left=${left}`);
+            // Listener para receber token do popup
+            window.addEventListener('message', async function handler(ev) {
+                if (ev.origin.startsWith('http')) {
+                    if (ev.data && ev.data.googleAccessToken) {
+                        window.removeEventListener('message', handler);
+                        popup.close();
+                        // Envia token ao backend para autenticar/criar usuário
+                        try {
+                            const resp = await fetch('/api/auth/google', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ access_token: ev.data.googleAccessToken })
+                            });
+                            if (!resp.ok) throw new Error('Falha ao autenticar com Google');
+                            usuarioAtual = await resp.json();
+                            localStorage.setItem('usuarioAtual', JSON.stringify(usuarioAtual));
+                            loginSection.style.display = 'none';
+                            areaLogin.style.display = '';
+                            document.querySelectorAll('.profilebar section, .feed, .sidebar').forEach(el => el.style.display = '');
+                            renderLogin();
+                            carregarPerguntas();
+                            carregarChats();
+                            mostrarSecao('area-login');
+                        } catch (err) {
+                            loginFeedback.textContent = "Falha ao autenticar com Google.";
+                        }
+                    }
+                }
+            });
+        };
+
+        // Evento do botão Google
+        document.getElementById('btn-google-login').onclick = function(e) {
+            e.preventDefault();
+            loginComGoogle();
+        };
+
+        // --- TEMA E PRIVACIDADE ---
+        // Adiciona mais opções de tema e configurações de privacidade
+        const temaSelect = document.getElementById('tema-select');
+        if (temaSelect) {
+            temaSelect.innerHTML = `
+                <option value="claro">Claro</option>
+                <option value="escuro">Escuro</option>
+                <option value="preto">Preto</option>
+                <option value="rosa-escuro">Rosa Escuro</option>
+                <option value="rosa-claro">Rosa Claro</option>
+            `;
+        }
+        function aplicarTema(tema) {
+            document.body.classList.remove('tema-escuro', 'tema-preto', 'tema-rosa-escuro', 'tema-rosa-claro');
+            if (tema === 'escuro') document.body.classList.add('tema-escuro');
+            else if (tema === 'preto') document.body.classList.add('tema-preto');
+            else if (tema === 'rosa-escuro') document.body.classList.add('tema-rosa-escuro');
+            else if (tema === 'rosa-claro') document.body.classList.add('tema-rosa-claro');
+            localStorage.setItem('tema', tema);
+        }
+        if (temaSelect) {
+            temaSelect.value = localStorage.getItem('tema') || 'claro';
+            aplicarTema(temaSelect.value);
+            temaSelect.onchange = () => aplicarTema(temaSelect.value);
+        }
+
+        // Configurações de privacidade
+        const configSection = document.getElementById('configuracoes');
+        if (configSection) {
+            // Adiciona opções de privacidade
+            configSection.insertAdjacentHTML('beforeend', `
+                <div style="margin-top:22px;">
+                    <h3>Privacidade</h3>
+                    <label style="display:block;margin-bottom:8px;">
+                        <input type="checkbox" id="priv-perfil-publico"> Perfil público (aparece para todos)
+                    </label>
+                    <label style="display:block;margin-bottom:8px;">
+                        <input type="checkbox" id="priv-mensagens"> Permitir mensagens privadas de desconhecidos
+                    </label>
+                    <button id="btn-salvar-privacidade" type="button" style="margin-top:8px;">Salvar Privacidade</button>
+                    <span id="priv-feedback" class="feedback" aria-live="polite"></span>
+                </div>
+            `);
+            // Carrega privacidade do localStorage
+            function carregarPrivacidade() {
+                const priv = JSON.parse(localStorage.getItem('privacidade') || '{}');
+                document.getElementById('priv-perfil-publico').checked = !!priv.perfilPublico;
+                document.getElementById('priv-mensagens').checked = !!priv.mensagens;
+            }
+            carregarPrivacidade();
+            document.getElementById('btn-salvar-privacidade').onclick = function() {
+                const priv = {
+                    perfilPublico: document.getElementById('priv-perfil-publico').checked,
+                    mensagens: document.getElementById('priv-mensagens').checked
+                };
+                localStorage.setItem('privacidade', JSON.stringify(priv));
+                document.getElementById('priv-feedback').textContent = "Configurações salvas!";
+                setTimeout(() => document.getElementById('priv-feedback').textContent = "", 2000);
+            };
+        }
+
+        // --- ESTILOS PARA TEMAS EXTRAS (adicione ao <style> do <head> ou ao seu CSS) ---
+        /*
+        body.tema-preto {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        body.tema-preto .card, body.tema-preto .perfil, body.tema-preto .feed-form, body.tema-preto .login-section, body.tema-preto .config-section, body.tema-preto .chat-section {
+            background: #181818 !important;
+            color: #fff !important;
+        }
+        body.tema-rosa-escuro {
+            background: #2d112b !important;
+            color: #fff0f6 !important;
+        }
+        body.tema-rosa-escuro .card, body.tema-rosa-escuro .perfil, body.tema-rosa-escuro .feed-form, body.tema-rosa-escuro .login-section, body.tema-rosa-escuro .config-section, body.tema-rosa-escuro .chat-section {
+            background: #3a1836 !important;
+            color: #fff0f6 !important;
+        }
+        body.tema-rosa-claro {
+            background: #fff0f6 !important;
+            color: #a8005b !important;
+        }
+        body.tema-rosa-claro .card, body.tema-rosa-claro .perfil, body.tema-rosa-claro .feed-form, body.tema-rosa-claro .login-section, body.tema-rosa-claro .config-section, body.tema-rosa-claro .chat-section {
+            background: #ffe3ef !important;
+            color: #a8005b !important;
+        }
+        */
+    </script>
 </body>
 </html>
